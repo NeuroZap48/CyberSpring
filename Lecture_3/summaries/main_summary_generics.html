@@ -1,0 +1,981 @@
+<html lang="ar-SA" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>بدون عنوان</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		background-color: #191919; /* رمادي داكن مريح للعين - استبدله بـ #000000 للأسود الصريح */
+		color: #e6e6e6;            /* لون النص أبيض مائل للرمادي الفاتح */
+	}
+
+	/* لتوضيح عناوين وحدود الجدول مع الخلفية الداكنة */
+	th {
+		color: #b3b3b3 !important;
+	}
+	table, th, td {
+		border-color: rgba(255, 255, 255, 0.2) !important;
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="419e583e-5844-8052-82f5-cd1d1dcf3608" class="page sans"><header><h1 class="page-title" dir="auto"></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h2 id="41ae583e-5844-80a6-8004-cd616595a131" class="" dir="auto">المحور الأول: الفلسفة والمشكلة التي حلتها التعميمات (Generics)</h2><p id="41ae583e-5844-8031-aff2-f1a9e79fb94f" class="" dir="auto">التعميمات (<code>Generics</code>) هي ميزة أُضيفت في إصدار جافا الخامس، وتسمح لك بكتابة كلاسات، واجهات (<code>Interfaces</code>)، ودوال (<code>Methods</code>) تعمل مع <strong>أنواع بيانات مختلفة</strong> دون الحاجة لتكرار الكود، مع الحفاظ الكامل على فحص الأخطاء أثناء كتابة الكود (<code>Compile-time Type Safety</code>).</p><h3 id="41ae583e-5844-8015-a49d-ceb0be6a2996" class="" dir="auto">كيف كنا نكتب الكود قبل التعميمات؟</h3><p id="41ae583e-5844-80cc-b26d-cc6beec3d0d7" class="" dir="auto">قبل وجود التعميمات، إذا أراد مبرمج إنشاء قائمة (<code>ArrayList</code>) تخزن أي نوع من البيانات، كانت الجافا تخزن العناصر بداخلها على أنها من نوع <code>Object</code> (الأب الأعلى لكل الكلاسات). هذا الأسلوب كان يسبب كارثتين:</p><ul id="41ae583e-5844-806e-9221-d6334baa70bc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>غياب الحماية أثناء الكتابة:</strong> كان بإمكانك وضع نص (<code>String</code>) ورقم (<code>Integer</code>) وكائن طالب (<code>Student</code>) في نفس القائمة دون أن يعترض المترجم (<code>Compiler</code>)، لأن الجميع يرث من <code>Object</code>.</li></ul><ul id="41ae583e-5844-80f3-858c-f78707521abc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>انهيار السيرفر أثناء التشغيل (</strong><code><strong>ClassCastException</strong></code><strong>):</strong> عند استخراج البيانات من القائمة، كنت مجبراً على عمل تحويل يدوي (<code>Explicit Casting</code>)، وإذا أخطأت في نوع العنصر، ينهار التطبيق فجأة في وقت التشغيل (<code>Runtime</code>).</li></ul><p id="41ae583e-5844-80e4-b69d-ff45d3c6b7f9" class="" dir="auto">Java</p><h1 id="41ae583e-5844-80cd-b0e1-f352bab96099" class="" dir="auto"></h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="41ae583e-5844-8072-8e0c-f48f6db5bc85" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">// الطريقة القديمة الخطيرة (بدون Generics)
+List list = new ArrayList();
+list.add(&quot;Mohanad&quot;);
+list.add(23); // المترجم يسمح بإضافة رقم مع النص دون أي اعتراض!
+
+// الكارثة تحدث هنا عند التشغيل: محاولة تحويل الرقم إلى نص ترمي ClassCastException
+String name = (String) list.get(1);</code></pre><h3 id="41ae583e-5844-80b9-98b1-fed5de30a09b" class="" dir="auto">كيف أنقذت التعميمات المبرمجين؟</h3><p id="41ae583e-5844-809d-92ef-e8e96fe86533" class="" dir="auto">عندما تكتب <code>List&lt;String&gt;</code>، فأنت تُمرر النوع <code>String</code> كـ <strong>&quot;معامل نوع&quot; (</strong><code><strong>Type Parameter</strong></code><strong>)</strong> إلى الكلاس <code>List</code>. وبذلك تكسب ثلاث مزايا جوهرية:</p><ul id="41ae583e-5844-8055-a6c8-cf54b2b49462" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>حماية صارمة وقت الكتابة (</strong><code><strong>Compile-time Safety</strong></code><strong>):</strong> إذا حاولت إضافة رقم إلى <code>List&lt;String&gt;</code>، يظهر خطأ أحمر فوراً قبل تشغيل البرنامج.</li></ul><ul id="41ae583e-5844-80a2-b736-dba5db1757e1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>إلغاء التحويل اليدوي (</strong><code><strong>No Explicit Casting</strong></code><strong>):</strong> المترجم يعرف مسبقاً أن كل ما يخرج من الصندوق هو <code>String</code>، فيقوم بالتحويل نيابةً عنك في الخلفية.</li></ul><ul id="41ae583e-5844-80cc-bf34-d7c11b768c96" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>إعادة استخدام البنية البرمجية (</strong><code><strong>Code Reusability</strong></code><strong>):</strong> بدلاً من كتابة كلاس <code>StudentRepository</code> وآخر <code>CourseRepository</code> وثالث <code>TeacherRepository</code> بنفس الدوال، تكتب كلاساً معمماً واحداً <code>JpaRepository&lt;T, ID&gt;</code> يخدم النظام كله.</li></ul><h3 id="41ae583e-5844-8021-85ed-f932c442b67f" class="" dir="auto">اصطلاحات التسمية المتفق عليها بين المبرمجين</h3><p id="41ae583e-5844-8084-97ac-f495e16b1707" class="" dir="auto">يمكنك كتابة أي اسم داخل الأقواس المثلثة <code>&lt;...&gt;</code>، لكن المجتمع البرمجي وإطار عمل Spring يلتزمون بحروف موحدة لتسهيل قراءة الكود:</p><table id="41ae583e-5844-80f0-8d52-cf25fbe96595" class="simple-table" dir="rtl"><tbody><tr id="41ae583e-5844-8068-9a97-c2fce9c2e3fa" dir="rtl"><td id="GSGd" class=""><strong>الحرف</strong></td><td id="nKgs" class=""><strong>الكلمة الإنجليزية</strong></td><td id="Tfff" class=""><strong>دلالته واستخدامه الشائع</strong></td></tr><tr id="41ae583e-5844-806a-8459-d908a9e34a32" dir="rtl"><td id="GSGd" class="">الحرف <code>T</code></td><td id="nKgs" class="">اختصار <code>Type</code></td><td id="Tfff" class="">يمثل أي نوع كائن عام (مثل <code>ApiResponse&lt;T&gt;</code>).</td></tr><tr id="41ae583e-5844-80b0-aca7-d9120f8a8120" dir="rtl"><td id="GSGd" class="">الحرف <code>E</code></td><td id="nKgs" class="">اختصار <code>Element</code></td><td id="Tfff" class="">يُستخدم في هياكل البيانات والمجموعات (مثل <code>List&lt;E&gt;</code> و <code>Set&lt;E&gt;</code>).</td></tr><tr id="41ae583e-5844-802e-857d-d1fc8c7e278a" dir="rtl"><td id="GSGd" class="">الحرف <code>K</code></td><td id="nKgs" class="">اختصار <code>Key</code></td><td id="Tfff" class="">يمثل المفتاح في الخرائط (مثل <code>Map&lt;K, V&gt;</code>).</td></tr><tr id="41ae583e-5844-80f5-93c9-d80d8e68c67f" dir="rtl"><td id="GSGd" class="">الحرف <code>V</code></td><td id="nKgs" class="">اختصار <code>Value</code></td><td id="Tfff" class="">يمثل القيمة المقابلة للمفتاح (مثل <code>Map&lt;K, V&gt;</code>).</td></tr><tr id="41ae583e-5844-800d-886b-d23626cbd59f" dir="rtl"><td id="GSGd" class="">الحرف <code>R</code></td><td id="nKgs" class="">اختصار <code>Return</code></td><td id="Tfff" class="">يمثل نوع النتيجة العائدة في البرمجة الوظيفية (مثل <code>Function&lt;T, R&gt;</code>).</td></tr><tr id="41ae583e-5844-80ac-8754-dbc41485791b" dir="rtl"><td id="GSGd" class="">الرمز <code>ID</code></td><td id="nKgs" class="">اختصار <code>Identifier</code></td><td id="Tfff" class="">شائع جداً في Spring Data لتمثيل نوع المفتاح الأساسي (مثل <code>Long</code> أو <code>UUID</code>).</td></tr></tbody></table><h2 id="41ae583e-5844-8006-b137-c84a400c885e" class="" dir="auto">المحور الثاني: بناء الكلاسات والواجهات والدوال المعممة</h2><h3 id="41ae583e-5844-8085-b363-cd2429416f24" class="" dir="auto">أولاً: الكلاس المعمم (Generic Class)</h3><p id="41ae583e-5844-804f-876d-e9f132559d3b" class="" dir="auto">لجعل الكلاس معمماً، نضع معامل النوع <code>&lt;T&gt;</code> بعد اسم الكلاس مباشرة. عندها يصبح <code>T</code> متاحاً كنوع بيانات لأي متغير أو دالة داخل الكلاس.</p><p id="41ae583e-5844-808b-87b2-d9bc3a608fc3" class="" dir="auto">Java</p><h1 id="41ae583e-5844-809d-81d1-f23669fea344" class="" dir="auto"></h1><pre id="41ae583e-5844-8016-bc10-d258699df798" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">// تعريف كلاس معمم يعمل كصندوق لأي نوع بيانات
+public class DataBox&lt;T&gt;{
+    private T content;
+
+    public void put(T content){
+        this.content = content;
+    }
+
+    public T get(){
+        return this.content;
+    }
+}
+
+// طريقة الاستخدام: نحدد النوع الفعلي عند إنشاء الكائن
+DataBox&lt;String&gt; textBox = new DataBox&lt;&gt;(); // استخدام رمز الماسة Diamond Operator
+textBox.put(&quot;Spring Boot&quot;);
+String value = textBox.get(); // لا حاجة لأي Casting</code></pre><h3 id="41ae583e-5844-80a0-99f8-f01a76bcea62" class="" dir="auto">ثانياً: تعدد المعاملات (Multiple Type Parameters)</h3><p id="41ae583e-5844-8052-9d16-fae90cfc5ca0" class="" dir="auto">يمكن للكلاس استقبال أكثر من نوع في نفس الوقت عبر الفصل بينها بفاصلة، وهو أسلوب أساسي في تصميم استجابات الـ API أو هياكل البيانات المزدوجة.</p><p id="41ae583e-5844-806b-b713-dcfbc1180930" class="" dir="auto">Java</p><h1 id="41ae583e-5844-809e-85f4-de298d2274f0" class="" dir="auto"></h1><pre id="41ae583e-5844-8096-81cf-fffde3b64757" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">public class Pair&lt;K, V&gt;{
+    private final K key;
+    private final V value;
+
+    public Pair(K key, V value){
+        this.key = key;
+        this.value = value;
+    }
+
+    public K getKey(){ return key; }
+    public V getValue(){ return value; }
+}
+
+// مثال الاستخدام
+Pair&lt;Long, String&gt; userRole = new Pair&lt;&gt;(101L, &quot;ROLE_ADMIN&quot;);</code></pre><h3 id="41ae583e-5844-80b9-923b-ff184a6d4dd8" class="" dir="auto">ثالثاً: الواجهة المعممة (Generic Interface) وأساسيات Spring Data</h3><p id="41ae583e-5844-80a4-9c33-c2d7002086c7" class="" dir="auto">الواجهات المعممة هي العمود الفقري لطبقة قواعد البيانات في Spring Boot. عندما ترث واجهتك من <code>JpaRepository&lt;User, Long&gt;</code>، فأنت تطبق هذا المفهوم تماماً.</p><p id="41ae583e-5844-803d-be78-fe7b9469d45b" class="" dir="auto">Java</p><h1 id="41ae583e-5844-809b-a1df-f448371c7758" class="" dir="auto"></h1><pre id="41ae583e-5844-80e4-94d7-c045b86c7b5b" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">// تعريف عقد عام لأي مستودع بيانات في النظام
+public interface BaseRepository&lt;T, ID&gt;{
+    T save(T entity);
+    Optional&lt;T&gt; findById(ID id);
+    void deleteById(ID id);
+}
+
+// كلاس يطبق الواجهة لكيان محدد (User) ومفتاح من نوع (Long)
+public class UserRepositoryImpl implements BaseRepository&lt;User, Long&gt;{
+    @Override
+    public User save(User entity){ /* كود الحفظ */ return entity; }
+
+    @Override
+    public Optional&lt;User&gt; findById(Long id){ /* كود البحث */ return Optional.empty(); }
+
+    @Override
+    public void deleteById(Long id){ /* كود الحذف */ }
+}</code></pre><h3 id="41ae583e-5844-8066-bc74-c5684fc51c4a" class="" dir="auto">رابعاً: الدالة المعممة (Generic Method)</h3><p id="41ae583e-5844-8013-979d-db9a949d5cd2" class="" dir="auto">أحياناً يكون الكلاس نفسه عادياً (غير معمم)، لكنك تحتاج إلى دالة واحدة بداخله تقبل أنواعاً مختلفة. هنا نضع <code>&lt;T&gt;</code> <strong>قبل نوع الإرجاع (Return Type)</strong> الخاص بالدالة.</p><ul id="41ae583e-5844-80e9-b808-d6c879419976" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ملاحظة مهمة:</strong> الدوال الثابتة (<code>static</code>) داخل الكلاس المعمم لا تستطيع رؤية الـ <code>&lt;T&gt;</code> الخاص بالكلاس؛ لأن <code>static</code> يتبع الكلاس قبل إنشاء أي كائن، لذلك يجب أن تُعرّف الدالة الـ <code>static</code> معاملها <code>&lt;T&gt;</code> الخاص بها.</li></ul><p id="41ae583e-5844-8075-b7b0-ef530a8ae254" class="" dir="auto">Java</p><h1 id="41ae583e-5844-80dc-8992-e34bf5e02fea" class="" dir="auto"></h1><pre id="41ae583e-5844-80fa-a379-db0cfbda7e80" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">public class JsonUtils{
+
+    // دالة ثابتة معممة: &lt;T&gt; تُكتب قبل نوع الإرجاع T
+    public static &lt;T&gt; T printAndReturn(T item){
+        System.out.println(&quot;Processing item: &quot; + item);
+        return item;
+    }
+}
+
+// المترجم يستنتج النوع تلقائياً (Type Inference) دون الحاجة لكتابته
+String s = JsonUtils.printAndReturn(&quot;Hello&quot;);
+Integer num = JsonUtils.printAndReturn(500);</code></pre><h2 id="41ae583e-5844-8000-a92b-e0f86fea2249" class="" dir="auto">المحور الثالث: تقييد الأنواع (Bounded Type Parameters)</h2><p id="41ae583e-5844-806e-a30e-d05dac308fec" class="" dir="auto">عندما تكتب <code>&lt;T&gt;</code> بدون قيود، فإن المترجم يعامل <code>T</code> على أنه <code>Object</code>؛ وبالتالي لا يمكنك استدعاء سوى دوال <code>Object</code> عليه (مثل <code>toString</code> و <code>equals</code>).<br/>ولكن ماذا لو كنت تبني نظاماً وتريد السماح فقط للكائنات التي ترث من <code>BaseEntity</code> لكي تتمكن من استدعاء <code>entity.getId()</code> بأمان؟ هنا نستخدم الكلمة المفتاحية <code>extends</code>.</p><h3 id="41ae583e-5844-80d5-8353-d5e999a50cd4" class="" dir="auto">تقييد النوع بكلاس أو واجهة واحدة</h3><p id="41ae583e-5844-80d7-91fe-d1cbd5823816" class="" dir="auto">نستخدم <code>extends</code> دائماً سواء كان القيد كلاساً أو واجهة (<code>Interface</code>):</p><p id="41ae583e-5844-80d0-97d9-c4c8e558d4ac" class="" dir="auto">Java</p><h1 id="41ae583e-5844-80ad-aa3f-eef462ae8533" class="" dir="auto"></h1><pre id="41ae583e-5844-8021-ae5c-f1373ecf8acd" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">// الكلاس الأب المشترك لكل جداول قاعدة البيانات
+public abstract class BaseEntity{
+    private Long id;
+    public Long getId(){ return id; }
+}
+
+// الآن T مقيد: يُسمح فقط بـ BaseEntity أو أي كلاس يرث منه
+public class EntityAuditor&lt;T extends BaseEntity&gt;{
+
+    public void logEntityId(T entity){
+        // المترجم يسمح باستدعاء getId() لأنه متأكد أن T يرث من BaseEntity
+        System.out.println(&quot;Auditing entity with ID: &quot; + entity.getId());
+    }
+}</code></pre><h3 id="41ae583e-5844-80e4-aa9d-cbb87c312476" class="" dir="auto">تعدد القيود (Multiple Bounds)</h3><p id="41ae583e-5844-806a-94c8-c7173b2b4f94" class="" dir="auto">يمكنك إجبار النوع <code>T</code> على تحقيق أكثر من شرط في آنٍ واحد باستخدام علامة <code>&amp;</code>، بشرط الالتزام بقاعدة صارمة: <strong>إذا كان هناك كلاس ضمن القيود، يجب أن يُكتب أولاً قبل الواجهات (</strong><code><strong>Interfaces</strong></code><strong>).</strong></p><p id="41ae583e-5844-8034-874a-dc3306edf802" class="" dir="auto">Java</p><h1 id="41ae583e-5844-8064-9f9b-c587a56dc45a" class="" dir="auto"></h1><pre id="41ae583e-5844-80d5-a7cf-f8833ff65d37" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">// صحيح: الكلاس BaseEntity أولاً، ثم الواجهات
+public class CacheManager&lt;T extends BaseEntity &amp; Serializable &amp; Comparable&lt;T&gt;&gt;{
+    // ...
+}
+
+// خطأ برمجي: لا يجوز وضع الواجهة قبل الكلاس
+// public class CacheManager&lt;T extends Serializable &amp; BaseEntity&gt; {}</code></pre><h2 id="41ae583e-5844-8033-a3b3-f61f6a5aee8a" class="" dir="auto">المحور الرابع: البدل والمرونة (Wildcards) ومبدأ PECS</h2><p id="41ae583e-5844-805e-b309-f78c23d419ab" class="" dir="auto">هذا المحور هو الفارق الحقيقي بين المبرمج المبتدئ والمحترف في الجافا.</p><h3 id="41ae583e-5844-80be-8cc2-c110bf959f22" class="" dir="auto">لغز الوراثة في القوائم (Invariance)</h3><p id="41ae583e-5844-80a6-9705-d038d99d3153" class="" dir="auto">نعلم أن كلاس <code>Dog</code> يرث من <code>Animal</code>. ولكن في الجافا: <strong>قائمة الكلاب </strong><code><strong>List&lt;Dog&gt;</strong></code><strong> ليست ابنة لقائمة الحيوانات </strong><code><strong>List&lt;Animal&gt;</strong></code><strong>!</strong><br/>لماذا منعت الجافا ذلك؟ تخيل لو سمحت الجافا بتمرير <code>List&lt;Dog&gt;</code> إلى دالة تستقبل <code>List&lt;Animal&gt;</code>؛ عندها ستتمكن الدالة من إضافة كائن <code>Cat</code> داخل القائمة باعتبارها قائمة حيوانات، فتفسد قائمة الكلاب وتنهار عند القراءة!</p><p id="41ae583e-5844-8091-a26f-dfbcf7901c79" class="" dir="auto">لحل هذه المشكلة وتوفير المرونة في مدخلات الدوال، ابتكرت الجافا علامة البدل <code><strong>?</strong></code><strong> (Wildcard)</strong> التي تعني &quot;نوع غير معروف&quot;.</p><h3 id="41ae583e-5844-80c5-8745-e94d333ed7b0" class="" dir="auto">أنواع البدل الثلاثة</h3><ul id="41ae583e-5844-8023-a5c8-c31c63bdab30" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>البدل غير المقيد (</strong><code><strong>&lt;?&gt;</strong></code><strong>):</strong> يقبل قائمة من أي نوع على الإطلاق. يُستخدم عندما تعتمد الدالة فقط على دوال <code>Object</code> أو حجم القائمة دون الاهتمام بنوع العناصر.</li></ul><ul id="41ae583e-5844-80bc-9a01-e4e005a39a44" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>البدل المقيد بحد أعلى (</strong><code><strong>&lt;? extends T&gt;</strong></code><strong>):</strong> يقبل <code>T</code> أو <strong>أي كلاس يرث منه (أبناؤه)</strong>.</li></ul><ul id="41ae583e-5844-8096-962a-d4f61003ba90" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>البدل المقيد بحد أدنى (</strong><code><strong>&lt;? super T&gt;</strong></code><strong>):</strong> يقبل <code>T</code> أو <strong>أي كلاس يعلوه في الوراثة (آباؤه وصولاً إلى </strong><code><strong>Object</strong></code><strong>)</strong>.</li></ul><h3 id="41ae583e-5844-8087-b2f4-cbca907f867a" class="" dir="auto">القاعدة الذهبية: مبدأ PECS</h3><p id="41ae583e-5844-80e9-a7f3-f571bda0f1bf" class="" dir="auto">اختصار لعبارة: <strong>Producer Extends, Consumer Super</strong> (المُنتِج يأخذ <code>extends</code>، والمُستهلك يأخذ <code>super</code>).</p><ul id="41ae583e-5844-80a1-b7e7-f3e6f692858f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>متى تستخدم </strong><code><strong>&lt;? extends T&gt;</strong></code><strong> (المُنتِج - Producer)؟</strong><br/>عندما تكون القائمة <strong>تُنتج</strong> لك بيانات لتقرأها فقط. أنت متأكد أن كل عنصر يخرج منها هو على الأقل من نوع <code>T</code> (مثلاً <code>Number</code>)، لكن <strong>يُمنع عليك الإضافة إليها</strong> لأنك لا تعرف هل القائمة الأصلية <code>List&lt;Integer&gt;</code> أم <code>List&lt;Double&gt;</code>.</li></ul><ul id="41ae583e-5844-8068-b1e7-ccae15978cd3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>متى تستخدم </strong><code><strong>&lt;? super T&gt;</strong></code><strong> (المُستهلك - Consumer)؟</strong><br/>عندما تريد <strong>إضافة (استهلاك)</strong> عناصر من نوع <code>T</code> إلى القائمة. أنت متأكد أن القائمة تستوعب <code>T</code> (سواء كانت <code>List&lt;Integer&gt;</code> أو <code>List&lt;Number&gt;</code> أو <code>List&lt;Object&gt;</code>)، لكن عند القراءة منها لن تحصل إلا على <code>Object</code>.</li></ul><p id="41ae583e-5844-8028-a799-d4f18c49aa03" class="" dir="auto">Java</p><h1 id="41ae583e-5844-80b6-ba27-f0a6daf7c9b4" class="" dir="auto"></h1><pre id="41ae583e-5844-8099-a85e-e272c87ee152" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">public class WildcardDemo{
+
+    // Producer: نقرأ الأرقام من القائمة ونجمعها -&gt; نستخدم extends
+    public static double sumNumbers(List&lt;? extends Number&gt; numbers){
+        double total = 0.0;
+        for (Number n : numbers) { // القراءة آمنة تماماً
+            total += n.doubleValue();
+        }
+        // numbers.add(10); // ممنوع! خطأ ترجمة لأننا لا نعرف النوع الدقيق للقائمة
+        return total;
+    }
+
+    // Consumer: نضيف أرقاماً صحيحة إلى القائمة -&gt; نستخدم super
+    public static void addDefaultIds(List&lt;? super Integer&gt; list){
+        list.add(1); // الإضافة آمنة لأن القائمة إما Integer أو Number أو Object
+        list.add(2);
+    }
+}</code></pre><h2 id="41ae583e-5844-8026-8706-ee31230ba688" class="" dir="auto">المحور الخامس: ما يحدث خلف الكواليس — محو الأنواع (Type Erasure)</h2><p id="41ae583e-5844-80a8-8334-f15fafb45fe5" class="" dir="auto">لكي تحافظ الجافا على التوافق مع الإصدارات القديمة جداً، قرر مصممو اللغة أن التعميمات (<code>Generics</code>) تكون موجودة <strong>فقط أثناء كتابة الكود وترجمته (</strong><code><strong>Compile-time</strong></code><strong>)</strong>، ثم يتم مسحها بالكامل قبل تشغيل البرنامج (<code>Runtime</code>). هذه العملية تُسمى <strong>محو الأنواع (</strong><code><strong>Type Erasure</strong></code><strong>)</strong>.</p><h3 id="41ae583e-5844-80e8-9fc8-c06cb2a7d454" class="" dir="auto">كيف يتعامل المترجم مع التعميمات؟</h3><p id="41ae583e-5844-806b-a72b-e3fead0d3f7a" class="" dir="auto">عند ترجمة الكود إلى Bytecode، يقوم المترجم بالآتي:</p><ul id="41ae583e-5844-80a4-a4f7-db2a6733288e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">يستبدل كل معامل نوع غير مقيد <code>&lt;T&gt;</code> بكلاس <code>Object</code>.</li></ul><ul id="41ae583e-5844-8036-a55b-f667c66ce09d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">يستبدل كل معامل نوع مقيد <code>&lt;T BaseEntity extends&gt;</code> بالحد الأعلى له وهو <code>BaseEntity</code>.</li></ul><ul id="41ae583e-5844-8001-9919-d21ce5627c5e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">يقوم بحقن عمليات التحويل (<code>Cast</code>) تلقائياً في الأماكن التي تستخرج فيها البيانات.</li></ul><p id="41ae583e-5844-80a2-ba74-fe2d28646481" class="" dir="auto">بمعنى آخر، في الذاكرة أثناء التشغيل (<code>Runtime</code>)، لا يوجد فرق بين <code>List&lt;String&gt;</code> و <code>List&lt;Integer&gt;</code>؛ كلاهما يصبح مجرد <code>List</code> خام!</p><h3 id="41ae583e-5844-8059-9a6e-d550138e21f0" class="" dir="auto">القيود الممنوعة بسبب محو الأنواع</h3><p id="41ae583e-5844-8030-82ce-f779542e3c20" class="" dir="auto">بسبب اختفاء نوع <code>T</code> في وقت التشغيل، تفرض الجافا قيوداً مهمة يجب أن تفهم سببها:</p><ul id="41ae583e-5844-8094-99a3-dafe5d82743a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>منع إنشاء كائن مباشر (</strong><code><strong>new T()</strong></code><strong>):</strong> لأن المترجم لا يعرف أي Constructor يستدعي في وقت التشغيل. (الحل في الـ Backend هو تمرير <code>Class&lt;T&gt; clazz</code> واستخدام <code>Reflection</code>).</li></ul><ul id="41ae583e-5844-80fa-a217-d0cce1f13214" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>منع إنشاء مصفوفة معممة (</strong><code><strong>new T[]</strong></code><strong>):</strong> لأن المصفوفات في الجافا تحتفظ بنوعها الحقيقي في وقت التشغيل بعكس التعميمات.</li></ul><ul id="41ae583e-5844-8083-8d73-e9a239874368" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>منع استخدام الأنواع البدائية (</strong><code><strong>Primitives</strong></code><strong>):</strong> لا يمكنك كتابة <code>List&lt;int&gt;</code> لأن <code>int</code> لا يرث من <code>Object</code>؛ يجب استخدام الكلاسات المغلفة مثل <code>List&lt;Integer&gt;</code>.</li></ul><ul id="41ae583e-5844-8079-82dc-d94c3aaeed0d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>منع الفحص باستخدام </strong><code><strong>instanceof</strong></code><strong>:</strong> لا يمكنك كتابة <code>if (obj instanceof List&lt;String&gt;)</code> لأن معلومة <code>&lt;String&gt;</code> قد مُحيت أصلاً أثناء التشغيل.</li></ul><ul id="41ae583e-5844-8019-848e-d8c3d4735a50" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>منع استخدام </strong><code><strong>T</strong></code><strong> في الحقول الثابتة (</strong><code><strong>static</strong></code><strong>):</strong> لأن المتغير الـ <code>static</code> مشترك بين كل الكائنات؛ فلو أنشأت <code>Box&lt;String&gt;</code> و <code>Box&lt;Integer&gt;</code>، لن يعرف المتغير الـ <code>static</code> أي نوع يتبع.</li></ul><h3 id="41ae583e-5844-804a-8077-ec4633a55b94" class="" dir="auto">كيف يتغلب Spring على محو الأنواع؟ (ParameterizedTypeReference)</h3><p id="41ae583e-5844-80df-8f6f-e25708b71b9c" class="" dir="auto">في مشاريع الـ Backend، عندما تستخدم <code>RestTemplate</code> أو <code>WebClient</code> لاستدعاء خدمة خارجية تُرجع قائمة مستخدمين <code>List&lt;UserDto&gt;</code>، لا يمكنك كتابة <code>List&lt;UserDto&gt;.class</code> بسبب محو الأنواع.</p><p id="41ae583e-5844-804f-9681-e4b9dce78b8e" class="" dir="auto">لحل هذه المعضلة، ابتكر فريق Spring كلاساً عبقرياً يُسمى <code>ParameterizedTypeReference&lt;T&gt;</code> يعتمد على حيلة تُعرف بـ <strong>Super Type Tokens</strong>:</p><p id="41ae583e-5844-802f-b239-d0aeb971f93a" class="" dir="auto">Java</p><h1 id="41ae583e-5844-8037-8196-f606c9336ba4" class="" dir="auto"></h1><pre id="41ae583e-5844-80a4-8d23-c8f73d91728b" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">// استخدام الأقواس المتعرجة {} في النهاية ينشئ كلاساً ابناً مجهولاً (Anonymous Subclass)
+// الجافا تحتفظ بمعلومات الوراثة للكلاسات الأبناء في الـ Bytecode حتى في وقت التشغيل!
+ResponseEntity&lt;List&lt;UserDto&gt;&gt; response = restTemplate.exchange(
+    &quot;https://api.example.com/users&quot;,
+    HttpMethod.GET,
+    null,
+    new ParameterizedTypeReference&lt;List&lt;UserDto&gt;&gt;() {}
+);
+
+List&lt;UserDto&gt; users = response.getBody();</code></pre><p id="41ae583e-5844-80e4-8c41-d716d1dd07fe" class="" dir="auto">يستغل Spring هنا حقيقة أن محو الأنواع يمسح نوع الكائن نفسه، لكنه <strong>لا يمسح</strong> توقيع الكلاس الأب الذي يرث منه كلاس فرعي؛ فيقوم Spring بقراءة النوع <code>List&lt;UserDto&gt;</code> باستخدام الـ <code>Reflection</code> عبر دالة <code>getGenericSuperclass()</code> ويمرره لمكتبة Jackson لتحويل الـ JSON بدقة متناهية.</p><h2 id="41ae583e-5844-806a-8f67-cdd3369a0ee3" class="" dir="auto">المحور السادس: تطبيقات احترافية في Spring Boot و Backend</h2><p id="41ae583e-5844-802d-a4c1-e799a2eeffe5" class="" dir="auto">إتقان التعميمات ينقلك مباشرة من كتابة كود مكرر إلى بناء معمارية نظيفة (<code>Clean Architecture</code>) قابلة للتوسع في مشاريع Spring Boot.</p><h3 id="41ae583e-5844-8071-abd7-f8a9f64a5892" class="" dir="auto">أولاً: تغليف ردود السيرفر الموحدة (Unified API Response)</h3><p id="41ae583e-5844-80a3-9630-f5f9cbc27235" class="" dir="auto">في أي نظام Backend احترافي، يجب أن يخرج كل رد من الـ REST API بنفس الهيكل الثابت للواجهة الأمامية (Frontend)، مع اختلاف نوع البيانات (<code>data</code>) من شاشة لأخرى (مرة يكون <code>UserDto</code>، ومرة <code>List&lt;CourseDto&gt;</code>، ومرة <code>String</code>). التعميمات هي الحل المثالي هنا:</p><p id="41ae583e-5844-80da-aecb-d8ed7ef716a2" class="" dir="auto">Java</p><h1 id="41ae583e-5844-808b-8e3e-ff93a0aeb659" class="" dir="auto"></h1><pre id="41ae583e-5844-80c6-bd47-c3399dd11db7" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">public class ApiResponse&lt;T&gt;{
+    private boolean success;
+    private String message;
+    private T data;
+    private LocalDateTime timestamp;
+
+    public ApiResponse(boolean success, String message, T data){
+        this.success = success;
+        this.message = message;
+        this.data = data;
+        this.timestamp = LocalDateTime.now();
+    }
+
+    // دوال مساعدة سريعة لإنشاء الردود
+    public static &lt;T&gt; ApiResponse&lt;T&gt; ok(T data, String message){
+        return new ApiResponse&lt;&gt;(true, message, data);
+    }
+
+    public static &lt;T&gt; ApiResponse&lt;T&gt; error(String message){
+        return new ApiResponse&lt;&gt;(false, message, null);
+    }
+
+    // Getters...
+}</code></pre><p id="41ae583e-5844-8078-b93e-cb187b69fa2b" class="" dir="auto">وعند استخدامه في أي <code>RestController</code> يصبح الكود نظيفاً ومقروءاً للغاية:</p><p id="41ae583e-5844-8025-8ad5-e11be282b931" class="" dir="auto">Java</p><h1 id="41ae583e-5844-80de-aee9-c02fa777db94" class="" dir="auto"></h1><pre id="41ae583e-5844-80dd-ab97-cee8a5d4cbc9" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">@GetMapping(&quot;/{id}&quot;)
+public ResponseEntity&lt;ApiResponse&lt;StudentDto&gt;&gt; getStudent(@PathVariable Long id) {
+    StudentDto dto = studentService.findById(id);
+    return ResponseEntity.ok(ApiResponse.ok(dto, &quot;Student retrieved successfully&quot;));
+}</code></pre><h3 id="41ae583e-5844-80af-94de-cdf16591a30a" class="" dir="auto">ثانياً: بناء خدمة أساسية موحدة (Generic Base Service)</h3><p id="41ae583e-5844-80d9-8b3a-f8759d4ef944" class="" dir="auto">بدلاً من تكرار دوال الحفظ والبحث والحذف في كل Service (مثل <code>StudentService</code> و <code>DepartmentService</code> و <code>TeacherService</code>)، يمكنك بناء كلاس مجرد معمم يجمع العمليات المشتركة ويربطها مع <code>JpaRepository</code>:</p><p id="41ae583e-5844-8009-998d-fcafd327d9be" class="" dir="auto">Java</p><h1 id="41ae583e-5844-8036-a523-d2944616dfa9" class="" dir="auto"></h1><pre id="41ae583e-5844-806f-bc5b-e0c6a7576396" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">public abstract class BaseService&lt;T extends BaseEntity, ID&gt;{
+
+    // نجبر كل كلاس ابن على تزويدنا بالـ Repository الخاص به
+    protected abstract JpaRepository&lt;T, ID&gt; getRepository();
+
+    public T save(T entity){
+        return getRepository().save(entity);
+    }
+
+    public T findByIdOrThrow(ID id){
+        return getRepository().findById(id)
+            .orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Record not found with id: &quot; + id));
+    }
+
+    public List&lt;T&gt; findAll(){
+        return getRepository().findAll();
+    }
+
+    public void deleteById(ID id){
+        T entity = findByIdOrThrow(id);
+        getRepository().delete(entity);
+    }
+}</code></pre><p id="41ae583e-5844-801d-b998-ed9c42593634" class="" dir="auto">الآن، عندما تنشئ خدمة جديدة مثل <code>DepartmentService</code>، ترث كل هذه الوظائف الجاهزة بسطور معدودة، وتتفرغ فقط لكتابة منطق العمل الخاص بالأقسام:</p><p id="41ae583e-5844-8061-b35f-ff5aa621f4e8" class="" dir="auto">Java</p><h1 id="41ae583e-5844-80d3-bc9d-d4109a51ae6f" class="" dir="auto"></h1><pre id="41ae583e-5844-8088-af2b-f5fd16c2ded3" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">@Service
+public class DepartmentService extends BaseService&lt;Department, Long&gt;{
+
+    private final DepartmentRepository departmentRepository;
+
+    public DepartmentService(DepartmentRepository departmentRepository){
+        this.departmentRepository = departmentRepository;
+    }
+
+    @Override
+    protected JpaRepository&lt;Department, Long&gt; getRepository(){
+        return this.departmentRepository;
+    }
+
+    // هنا تكتب فقط الدوال الخاصة بالأقسام مثل البحث برمز القسم
+}</code></pre><p id="41ae583e-5844-809c-999a-d20e79936163" class="" dir="auto">هل تود أن نطبق نفس هذا الأسلوب المعمم لبناء <code>BaseController</code> موحد في Spring Boot يختصر نقاط النهاية (<code>Endpoints</code>) الأساسية للـ CRUD؟</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+
+<style> /* 1. الوضع الليلي للصفحة بالكامل */ html, body { background-color: #191919 !important; /* استبدله بـ #000000 إذا أردت أسود صريحاً */ color: #e6e6e6 !important; } h1, h2, h3, p, li, blockquote { color: #e6e6e6 !important; } table, th, td { border-color: rgba(255, 255, 255, 0.18) !important; color: #e6e6e6 !important; } th, .simple-table-header-color { background-color: #252525 !important; color: #ffffff !important; } blockquote { border-color: #666666 !important; } /* 2. ضبط اتجاه الكود ومنع تقطيع السطور (ليظهر مثل IntelliJ IDEA) */ pre.code, pre.code code { direction: ltr !important; text-align: left !important; white-space: pre !important; word-break: normal !important; overflow-x: auto !important; background-color: #1e1f22 !important; color: #bcbec4 !important; font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace !important; font-size: 14px !important; line-height: 1.6 !important; text-shadow: none !important; } pre.code { border: 1px solid #393b40 !important; border-radius: 8px !important; padding: 1.2em !important; } /* تنسيق الكلمات البرمجية الصغيرة المكتوبة وسط النص العربي */ p code, li code, td code { direction: ltr !important; display: inline-block !important; background-color: #2b2d30 !important; color: #cf8e6d !important; padding: 0.1em 0.45em !important; border-radius: 4px !important; font-family: 'JetBrains Mono', Consolas, monospace !important; } /* 3. ألوان ثيم IntelliJ IDEA Dark لتلوين كود الجافا */ .token { text-shadow: none !important; background: transparent !important; } .token.comment { color: #7a7e85 !important; font-style: italic !important; } .token.keyword { color: #cf8e6d !important; } .token.string, .token.char { color: #6aab73 !important; } .token.number, .token.boolean { color: #2aacb8 !important; } .token.function { color: #56a8f5 !important; } .token.class-name { color: #e5c07b !important; } .token.annotation { color: #b3ae60 !important; } .token.operator, .token.punctuation { color: #bcbec4 !important; } </style> 
