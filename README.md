@@ -3,9 +3,8 @@ learning spring framework for backend development and cybersecurity
 For editing the format of summaries : 
 
 <style>
-  /* 1. الوضع الليلي للصفحة بالكامل */
   html, body {
-    background-color: #191919 !important; /* استبدله بـ #000000 إذا أردت أسود صريحاً */
+    background-color: #191919 !important; 
     color: #e6e6e6 !important;
   }
 
