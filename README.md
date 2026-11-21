@@ -26,7 +26,6 @@ For editing the format of summaries :
     border-color: #666666 !important;
   }
 
-  /* 2. ضبط اتجاه الكود ومنع تقطيع السطور (ليظهر مثل IntelliJ IDEA) */
   pre.code, pre.code code {
     direction: ltr !important;
     text-align: left !important;
@@ -47,7 +46,6 @@ For editing the format of summaries :
     padding: 1.2em !important;
   }
 
-  /* تنسيق الكلمات البرمجية الصغيرة المكتوبة وسط النص العربي */
   p code, li code, td code {
     direction: ltr !important;
     display: inline-block !important;
@@ -58,7 +56,6 @@ For editing the format of summaries :
     font-family: 'JetBrains Mono', Consolas, monospace !important;
   }
 
-  /* 3. ألوان ثيم IntelliJ IDEA Dark لتلوين كود الجافا */
   .token {
     text-shadow: none !important;
     background: transparent !important;
