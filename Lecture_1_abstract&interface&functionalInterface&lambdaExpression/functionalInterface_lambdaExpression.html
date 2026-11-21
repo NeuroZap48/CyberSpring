@@ -1,0 +1,852 @@
+<html lang="ar-SA" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>بدون عنوان</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="419e583e-5844-8052-82f5-cd1d1dcf3608" class="page sans"><header><h1 class="page-title" dir="auto"></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><p id="419e583e-5844-8034-86de-feecc63ae336" class="" dir="auto"><strong>ال Functional Interface</strong> (الواجهة الوظيفية) هي أي واجهة (<code>interface</code>) في لغة جافا تحتوي على <strong>دالة مجردة واحدة فقط (Single Abstract Method - SAM)</strong>، وتمثل الجسر الذي سمح للجافا بالانتقال من البرمجة كائنية التوجه الصارمة (OOP) إلى البرمجة الوظيفية (Functional Programming) ابتداءً من إصدار Java 8.</p><p id="419e583e-5844-80f9-98fa-e1d97928b0ac" class="" dir="auto">لفهمها وتدريسها للطلاب بسهولة، تخيل أننا قبل Java 8 كنا نمرر للدوال <strong>&quot;بيانات فقط&quot;</strong> (مثل رقم <code>int</code> أو نص <code>String</code> أو كائن <code>User</code>). لكن أحياناً نحتاج أن نمرر للدالة <strong>&quot;سلوكاً أو فعلاً&quot;</strong> (Behavior) — أي نمرر لها &quot;كوداً لتنفذه&quot; مثلما نمرر لها متغيراً. ولأن الجافا لا تسمح بوجود دوال حرة خارج الكلاسات، ابتكر مهندسو الجافا الـ Functional Interface لتكون &quot;الحاوية&quot; التي تغلف هذا السلوك وتنقله من مكان لآخر.</p><h2 id="419e583e-5844-8059-9e1c-e22dc5007060" class="" dir="auto">1. القاعدة الذهبية لتعريف الـ Functional Interface (قاعدة SAM)</h2><p id="419e583e-5844-809a-be27-d505d298da24" class="" dir="auto">لكي يُعتبر أي <code>interface</code> واجهة وظيفية صالحة، يجب أن يلتزم بقانون <strong>SAM (Single Abstract Method)</strong>:</p><ol type="1" id="419e583e-5844-8059-a9d5-dc030e8f479a" class="numbered-list" start="1" dir="auto"><li><strong>دالة مجردة واحدة فقط:</strong> يجب أن يمتلك دالة واحدة فقط بدون جسم (بدون <code>{}</code>)، وهي التي تحدد &quot;شكل العقد&quot; (المدخلات والمخرجات).</li></ol><ol type="1" id="419e583e-5844-8077-bf48-e2a4de010b52" class="numbered-list" start="2" dir="auto"><li><strong>يُسمح بوجود دوال </strong><code><strong>default</strong></code><strong> و </strong><code><strong>static</strong></code><strong> بأي عدد:</strong> وجود دوال مكتملة التنفيذ بداخل الواجهة لا يكسر القاعدة لأنها ليست مجردة.</li></ol><ol type="1" id="419e583e-5844-801a-84d6-e48f8a8f8d14" class="numbered-list" start="3" dir="auto"><li><strong>يُسمح بإعادة تعريف دوال كلاس </strong><code><strong>Object</strong></code><strong>:</strong> إذا كتبت دالة مثل <code>boolean equals(Object o)</code> أو <code>String toString()</code> داخل الواجهة، فإن المترجم (Compiler) لا يحسبها كدالة مجردة ثانية لأن كل كائن في جافا يرثها تلقائياً من <code>Object</code>.</li></ol><h3 id="419e583e-5844-8088-b74f-d79baa8b662a" class="" dir="auto">دور التعليق التوضيحي <code>@FunctionalInterface</code></h3><p id="419e583e-5844-8098-80c1-f11a7257e530" class="" dir="auto">وضع <code>@FunctionalInterface</code> فوق الواجهة <strong>اختياري</strong> من ناحية التشغيل، لكنه <strong>إجباري هندسياً</strong> كصمام أمان (مثل <code>@Override</code>). إذا وضعته ثم أتى زميلك في الفريق وأضاف دالة مجردة ثانية عن طريق الخطأ، سيمنعه المترجم فوراً ويظهر خطأ (Compile-time Error) قبل أن تتعطل أكواد الـ Lambda المعتمدة على هذه الواجهة.</p><p id="419e583e-5844-8086-97d6-ef014a29c3bc" class="" dir="auto">Java</p><h1 id="419e583e-5844-80b6-bf29-e8ab60147101" class="" dir="auto"></h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="419e583e-5844-8007-8adc-d9f7d2a90693" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">@FunctionalInterface
+public interface DiscountRule{
+    // 1. الدالة المجردة الوحيدة (SAM)
+    double applyDiscount(double price);
+
+    // 2. مسموح بدوال default
+    default void printInfo(){
+        System.out.println(&quot;Applying discount rule...&quot;);
+    }
+
+    // 3. مسموح بدوال static
+    static boolean isValidPrice(double price){
+        return price &gt; 0;
+    }
+}</code></pre><h2 id="419e583e-5844-805b-86fc-c22f9868a44d" class="" dir="auto">2. رحلة التطور: من الكود التقليدي إلى الاحتراف (4 مراحل)</h2><p id="419e583e-5844-801d-8bcb-ea14ff73dddf" class="" dir="auto">عند شرح هذا الموضوع للطلاب، أفضل طريقة لترسيخ الفكرة هي عرض نفس المثال بأربع طرق متدرجة من الأقدم للأحدث:</p><h3 id="419e583e-5844-8089-a37b-c6de6e5c9f10" class="" dir="auto">المرحلة الأولى: الكلاس التقليدي (ما قبل Java 8)</h3><p id="419e583e-5844-808b-b0dc-d6b2b00b4ba5" class="" dir="auto">ننشئ كلاساً منفصلاً يطبق الواجهة، ثم ننشئ منه كائناً:</p><p id="419e583e-5844-805d-82d8-dd810ad3416c" class="" dir="auto">Java</p><h1 id="419e583e-5844-80e2-9986-f55aaf42c4a5" class="" dir="auto"></h1><pre id="419e583e-5844-80bf-bdbd-f0be06985816" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">class VipDiscount implements DiscountRule{
+    @Override
+    public double applyDiscount(double price){
+        return price * 0.80; // خصم 20%
+    }
+}
+// الاستخدام:
+DiscountRule rule = new VipDiscount();</code></pre><h3 id="419e583e-5844-800d-9ada-c4afd94c3e50" class="" dir="auto">المرحلة الثانية: الكلاس الداخلي المجهول (Anonymous Inner Class)</h3><p id="419e583e-5844-80e1-900a-d4fc1b63c58d" class="" dir="auto">لتجنب إنشاء ملفات كثيرة، كنا نكتب التنفيذ مباشرة، لكن الكود كان مليئاً بالحشو (Boilerplate):</p><p id="419e583e-5844-80dd-84a5-f51991d23440" class="" dir="auto">Java</p><h1 id="419e583e-5844-8062-be1b-e8ff85f9dd7f" class="" dir="auto"></h1><pre id="419e583e-5844-806b-9f4b-e331ea5ad028" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">DiscountRule rule = new DiscountRule() {
+    @Override
+    public double applyDiscount(double price){
+        return price * 0.80;
+    }
+};</code></pre><h3 id="419e583e-5844-80c0-9ffc-d3f5ded57ae6" class="" dir="auto">المرحلة الثالثة: تعبير اللامدا (Lambda Expression - Java 8)</h3><p id="419e583e-5844-806b-8e6a-cc63b3176abb" class="" dir="auto">بما أن الواجهة لا تملك إلا دالة واحدة، فالمترجم يعرف اسمها ونوع مدخلاتها ومخرجاتها مسبقاً! لذا نحذف اسم الكلاس، واسم الدالة، وأنواع المتغيرات، ونبقي فقط على <strong>(المدخلات) -&gt; (التنفيذ)</strong>:</p><p id="419e583e-5844-805b-9331-e7ad94413fc7" class="" dir="auto">Java</p><h1 id="419e583e-5844-8058-944f-f9e2d8bc2854" class="" dir="auto"></h1><pre id="419e583e-5844-8058-8d5e-f5d3c537e923" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">// الصيغة الكاملة:
+DiscountRule rule1 = (double price) -&gt; {
+    return price * 0.80;
+};
+
+// الصيغة المختصرة الاحترافية:
+DiscountRule rule2 = price -&gt; price * 0.80;</code></pre><p id="419e583e-5844-8000-81cd-e13c7b66bb06" class="" dir="auto"><strong>قواعد اختصار الـ Lambda (للحفظ والفهم):</strong></p><ul id="419e583e-5844-800e-b7e6-fc7227a182c1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">إذا كان هناك <strong>مدخل واحد فقط</strong>، يمكنك حذف الأقواس <code>()</code> حوله (أما لو صفر مدخلات <code>()</code> أو مدخلان <code>(a, b)</code> فالأقواس إجبارية).</li></ul><ul id="419e583e-5844-8019-b426-fda2548e487b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">لا داعي لكتابة نوع المدخل (<code>double</code>) لأن المترجم يستنتجه من الواجهة (Type Inference).</li></ul><ul id="419e583e-5844-80f4-a011-d40e6437745f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">إذا كان جسم الدالة <strong>سطراً واحداً فقط</strong>، احذف الأقواس المعقوفة <code>{}</code> واحذف كلمة <code>return</code> والفاصلة المنقوطة بداخلها.</li></ul><h3 id="419e583e-5844-8011-8fc1-dafb0bb9ceaf" class="" dir="auto">المرحلة الرابعة: مراجع الدوال (Method References <code>::</code>)</h3><p id="419e583e-5844-8084-8319-c15c6b303d1c" class="" dir="auto">إذا كان الـ Lambda لا يفعل شيئاً سوى استدعاء دالة جاهزة وموجودة مسبقاً، نختصره أكثر باستخدام نقطتين رأسيتين <code>::</code>، ولها 4 أنواع فقط:</p><table id="419e583e-5844-8054-86fd-f13c7800ef2d" class="simple-table" dir="rtl"><tbody><tr id="419e583e-5844-803b-8579-f22034e31760" dir="rtl"><td id="CWm@" class=""><strong>النوع</strong></td><td id="eM;=" class=""><strong>الصيغة</strong></td><td id="Kpi]" class=""><strong>مثال Lambda</strong></td><td id="k[sQ" class=""><strong>المكافئ بـ Method Reference</strong></td></tr><tr id="419e583e-5844-80f6-9b50-d5a86198af6e" dir="rtl"><td id="CWm@" class=""><strong>1. دالة ثابتة (Static Method)</strong></td><td id="eM;=" class=""><code>ClassName::staticMethod</code></td><td id="Kpi]" class=""><code>x -&gt; Integer.parseInt(x)</code></td><td id="k[sQ" class=""><code>Integer::parseInt</code></td></tr><tr id="419e583e-5844-8095-8890-eef2c373f2e5" dir="rtl"><td id="CWm@" class=""><strong>2. دالة لكائن محدد (Specific Object)</strong></td><td id="eM;=" class=""><code>objectInstance::method</code></td><td id="Kpi]" class=""><code>msg -&gt; System.out.println(msg)</code></td><td id="k[sQ" class=""><code>System.out::println</code></td></tr><tr id="419e583e-5844-80bd-a87e-d48777c3a2ad" dir="rtl"><td id="CWm@" class=""><strong>3. دالة لكائن عام من نفس النوع (Arbitrary Object)</strong></td><td id="eM;=" class=""><code>ClassName::instanceMethod</code></td><td id="Kpi]" class=""><code>str -&gt; str.toLowerCase()</code></td><td id="k[sQ" class=""><code>String::toLowerCase</code></td></tr><tr id="419e583e-5844-80a1-98a1-ef47ea372e58" dir="rtl"><td id="CWm@" class=""><strong>4. المُنشئ (Constructor)</strong></td><td id="eM;=" class=""><code>ClassName::new</code></td><td id="Kpi]" class=""><code>name -&gt; new User(name)</code></td><td id="k[sQ" class=""><code>User::new</code></td></tr></tbody></table><h2 id="419e583e-5844-8081-93ed-e3f4e3fb299a" class="" dir="auto">3. الأبطال الأربعة في حزمة <code>java.util.function</code></h2><p id="419e583e-5844-804c-808b-e85178e60a53" class="" dir="auto">بدلاً من أن يكتب كل مبرمج واجهة جديدة في كل مشروع، وفرت جافا حزمة جاهزة تسمى <code>java.util.function</code> تحتوي على أكثر من 40 واجهة، كلها مبنية على <strong>4 واجهات أساسية فقط</strong>. إذا أتقنت هذه الأربع، فقد أتقنت 80% من البرمجة الوظيفية في جافا، وStreams، وOptional، وSpring:</p><h3 id="419e583e-5844-80d8-88df-dfd4dace79df" class="" dir="auto">1. <code>Predicate&lt;T&gt;</code> (المُختبِر / الفلتر)</h3><ul id="419e583e-5844-80aa-856e-e016cdcf77fe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>وظيفتها:</strong> تأخذ قيمة من نوع <code>T</code> وتفحص شرطاً معيناً عليها، ثم ترجع <code>boolean</code> (<code>true</code> أو <code>false</code>).</li></ul><ul id="419e583e-5844-809c-8ae3-c273bed51961" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>دالتها المجردة:</strong> <code>boolean test(T t)</code></li></ul><ul id="419e583e-5844-80a3-9971-c785237d16cb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>أين تراها؟</strong> في دالة <code>.filter()</code> داخل <code>Stream</code> و <code>Optional</code>.</li></ul><ul id="419e583e-5844-8077-afc6-cd3d2d47fdba" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>مثال عملي:</strong></li></ul><p id="419e583e-5844-80c8-bf46-e7e5bbd5cad0" class="" dir="auto">Java</p><h1 id="419e583e-5844-80a4-aee2-fd0a1de42aa9" class="" dir="auto"></h1><pre id="419e583e-5844-803a-b499-d892c73855a9" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">Predicate&lt;String&gt; isStrongPassword = pass -&gt; pass.length() &gt;= 12 &amp;&amp; pass.contains(&quot;@&quot;);
+System.out.println(isStrongPassword.test(&quot;Admin@123456&quot;)); // true</code></pre><h3 id="419e583e-5844-806a-81d8-ef47353a8dea" class="" dir="auto">2. <code>Function&lt;T, R&gt;</code> (المُحوّل / المصنع)</h3><ul id="419e583e-5844-805c-ad84-e42db06edc76" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>وظيفتها:</strong> تأخذ مدخلاً من نوع <code>T</code>، تجري عليه معالجة أو تحويلاً، وترجع مخرجاً من نوع <code>R</code> (قد يكون نفس النوع أو نوعاً مختلفاً تماماً).</li></ul><ul id="419e583e-5844-80bd-8c67-d807cfa3949c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>دالتها المجردة:</strong> <code>R apply(T t)</code></li></ul><ul id="419e583e-5844-802e-b3ac-d59a84633026" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>أين تراها؟</strong> في دالة <code>.map()</code> لتحويل كائن <code>User</code> إلى <code>UserDTO</code> في مشاريع Spring Boot.</li></ul><ul id="419e583e-5844-8009-8007-d862f88f4ace" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>مثال عملي:</strong></li></ul><p id="419e583e-5844-80c3-b6da-e4b7dbb5572e" class="" dir="auto">Java</p><h1 id="419e583e-5844-808a-90db-fc88c27a88d4" class="" dir="auto"></h1><pre id="419e583e-5844-8097-a7f8-d2d0c7720466" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">Function&lt;String, Integer&gt; getTextLength = text -&gt; text.length();
+System.out.println(getTextLength.apply(&quot;Spring Security&quot;)); // 15</code></pre><h3 id="419e583e-5844-80b8-8977-d63524d2c4b0" class="" dir="auto">3. <code>Consumer&lt;T&gt;</code> (المُستهلك / المُنفّذ)</h3><ul id="419e583e-5844-8043-b207-e7d75a56bdbe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>وظيفتها:</strong> تأخذ قيمة من نوع <code>T</code> وتنفذ عليها إجراءً جانبياً (مثل الطباعة، الحفظ في قاعدة البيانات، إرسال إيميل)، ولا ترجع شيئاً (<code>void</code>).</li></ul><ul id="419e583e-5844-808b-ac48-fc5f03f16f71" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>دالتها المجردة:</strong> <code>void accept(T t)</code></li></ul><ul id="419e583e-5844-8005-88cf-e55b86c428dd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>أين تراها؟</strong> في دالة <code>.forEach()</code> ودالة <code>.ifPresent()</code>.</li></ul><ul id="419e583e-5844-80e5-b8b6-e01870bcb069" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>مثال عملي:</strong></li></ul><p id="419e583e-5844-8005-88e9-c65c6fe65d19" class="" dir="auto">Java</p><h1 id="419e583e-5844-800d-b68d-fa244ec34cd4" class="" dir="auto"></h1><pre id="419e583e-5844-80e3-a6d0-e28f3a9cb8fe" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">Consumer&lt;String&gt; logSecurityAlert = alert -&gt; System.err.println(&quot;[ALERT]: &quot; + alert);
+logSecurityAlert.accept(&quot;Multiple failed login attempts!&quot;);</code></pre><h3 id="419e583e-5844-803e-8415-d21fdb36dfdf" class="" dir="auto">4. <code>Supplier&lt;T&gt;</code> (المُورّد / المولّد)</h3><ul id="419e583e-5844-80fe-9dbd-d003a85e2326" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>وظيفتها:</strong> لا تأخذ أي مدخلات <code>()</code>، ولكنها تُنتج لك وتُرجع قيمة من نوع <code>T</code> عند الطلب (Lazy Generation).</li></ul><ul id="419e583e-5844-8076-9515-d5c7d808162c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>دالتها المجردة:</strong> <code>T get()</code></li></ul><ul id="419e583e-5844-802c-8eb0-f3e753247353" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>أين تراها؟</strong> في دالة <code>.orElseGet()</code> في <code>Optional</code>، أو توليد أرقام عشوائية ورموز OTP.</li></ul><ul id="419e583e-5844-8096-bb40-e53fa9b5ef8e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>مثال عملي:</strong></li></ul><p id="419e583e-5844-80c1-97ae-d9ef6176156a" class="" dir="auto">Java</p><h1 id="419e583e-5844-8047-b912-e6c326ab7742" class="" dir="auto"></h1><pre id="419e583e-5844-8033-b1fa-f670f7add52a" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">Supplier&lt;String&gt; generateOtp = () -&gt; String.valueOf((int) (Math.random() * 9000) + 1000);
+System.out.println(generateOtp.get()); // مثلاً: 4829</code></pre><h2 id="419e583e-5844-80cb-bd28-e20a0d20f76b" class="" dir="auto">4. التوسعات المتقدمة في <code>java.util.function</code> (الوصول للاحتراف)</h2><p id="419e583e-5844-8071-a627-eef31c3328b9" class="" dir="auto">بمجرد أن يفهم الطالب الأبطال الأربعة، سيستوعب باقي الحزمة تلقائياً لأنها مجرد تنويعات منطقية عليها:</p><h3 id="419e583e-5844-80d5-b930-f7de8bedb5c0" class="" dir="auto">أ. النسخ ثنائية المدخلات (Bi-Variants)</h3><p id="419e583e-5844-80e2-93bc-de2786ac04ac" class="" dir="auto">عندما تحتاج دالتك إلى <strong>مدخلين</strong> بدلاً من مدخل واحد، أضف كلمة <code>Bi</code> في البداية:</p><ul id="419e583e-5844-80ad-a10d-e746d0879890" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code><strong>BiPredicate&lt;T, U&gt;</strong></code>: يأخذ مدخلين ويرجع <code>boolean</code> — دالتها: <code>boolean test(T t, U u)</code><ul id="419e583e-5844-8014-af78-f63341c2a536" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>مثال:</em> التحقق من تطابق اسم المستخدم وكلمة المرور: <code>(user, pass) -&gt; checkAuth(user, pass)</code></li></ul></li></ul><ul id="419e583e-5844-804a-aef3-d2a3571c0f09" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code><strong>BiFunction&lt;T, U, R&gt;</strong></code>: يأخذ مدخلين (<code>T</code>, <code>U</code>) ويرجع نتيجة (<code>R</code>) — دالتها: <code>R apply(T t, U u)</code><ul id="419e583e-5844-808a-9729-ee6f73587d92" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>مثال:</em> حساب السعر النهائي بناءً على السعر الأساسي ونسبة الضريبة: <code>(price, tax) -&gt; price + (price * tax)</code></li></ul></li></ul><ul id="419e583e-5844-8078-b2c0-cc542a6a6160" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code><strong>BiConsumer&lt;T, U&gt;</strong></code>: يأخذ مدخلين ولا يرجع شيئاً (<code>void</code>) — دالتها: <code>void accept(T t, U u)</code><ul id="419e583e-5844-80d2-9d93-c6a4ac281ff1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>مثال:</em> المرور على عناصر <code>HashMap</code> باستخدام <code>map.forEach((key, value) -&gt; ...)</code></li></ul></li></ul><h3 id="419e583e-5844-801c-b396-faaec8f43dd9" class="" dir="auto">ب. العوامل الموحدة (Operators)</h3><p id="419e583e-5844-80e3-af0c-e6c8e74c4030" class="" dir="auto">هي حالات خاصة من <code>Function</code> و <code>BiFunction</code> عندما يكون <strong>نوع المدخلات هو نفسه تماماً نوع المخرجات</strong>:</p><ul id="419e583e-5844-80bf-9a99-dbb46b752d51" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code><strong>UnaryOperator&lt;T&gt;</strong></code>: يرث من <code>Function&lt;T, T&gt;</code>. يأخذ <code>T</code> ويرجع <code>T</code>.<ul id="419e583e-5844-8004-99e9-d773db66e439" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>مثال:</em> تنظيف النصوص: <code>UnaryOperator&lt;String&gt; clean = s -&gt; s.trim().toUpperCase();</code></li></ul></li></ul><ul id="419e583e-5844-8076-a93d-d580201c1200" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code><strong>BinaryOperator&lt;T&gt;</strong></code>: يرث من <code>BiFunction&lt;T, T, T&gt;</code>. يأخذ اثنين من نوع <code>T</code> ويرجع واحداً من نفس النوع <code>T</code>.<ul id="419e583e-5844-804c-a60f-dafee7ce42b7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>مثال:</em> جمع رقمين أو اختيار الأكبر بينهما: <code>BinaryOperator&lt;Integer&gt; max = (a, b) -&gt; a &gt; b ? a : b;</code></li></ul></li></ul><h3 id="419e583e-5844-806b-9126-e5b61dfdceef" class="" dir="auto">ج. النسخ المخصصة للأنواع البدائية (Primitive Specializations) — سر الأداء العالي!</h3><p id="419e583e-5844-8064-b926-e89022181c3f" class="" dir="auto">في الجافا، الواجهات العامة مثل <code>Predicate&lt;Integer&gt;</code> لا تقبل الأنواع البدائية (<code>int</code>, <code>long</code>, <code>double</code>) بل تتطلب كائنات (Wrapper Classes). تحويل <code>int</code> إلى <code>Integer</code> وملايين المرات في السيرفر يُسمى <strong>Autoboxing / Unboxing</strong> ويستهلك الذاكرة (RAM) ويبطئ المعالج.</p><p id="419e583e-5844-8059-a1db-f614424c3f34" class="" dir="auto">لذلك وفرت جافا نسخاً مخصصة تتعامل مع <code>int</code> و <code>long</code> و <code>double</code> مباشرة بدون تغليف:</p><ul id="419e583e-5844-80c1-b019-d82f80e0e35f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code><strong>IntPredicate</strong></code>, <code>LongPredicate</code>, <code>DoublePredicate</code> (تأخذ <code>int</code> مباشرة وترجع <code>boolean</code>).</li></ul><ul id="419e583e-5844-80cd-8bbc-f152f3d6fb7f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code><strong>IntConsumer</strong></code>, <code>LongConsumer</code>, <code>DoubleConsumer</code> (تأخذ <code>int</code> مباشرة وتنفذ أمراً).</li></ul><ul id="419e583e-5844-803c-857e-e9c485df02af" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code><strong>IntSupplier</strong></code>, <code>LongSupplier</code>, <code>DoubleSupplier</code>, <code>BooleanSupplier</code> (ترجع <code>int</code> أو <code>boolean</code> بدائي مباشرة).</li></ul><ul id="419e583e-5844-803b-b23c-cbc4e7a0b308" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code><strong>IntFunction&lt;R&gt;</strong></code>: تأخذ <code>int</code> بدائي وترجع كائن <code>R</code>.</li></ul><ul id="419e583e-5844-8049-9c0c-f763e4a5a9e9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code><strong>ToIntFunction&lt;T&gt;</strong></code>: تأخذ كائن <code>T</code> وترجع <code>int</code> بدائي (ممتازة لحساب المجاميع والمتوسطات بسرعة فائقة).</li></ul><h2 id="419e583e-5844-80ab-a7fa-e63891fdc486" class="" dir="auto">5. تركيب الدوال (Function Composition) — ربط الدوال كقطع الليغو</h2><p id="419e583e-5844-8032-9b0f-e92c485c4fc9" class="" dir="auto">الاحتراف الحقيقي يظهر عندما تدمج عدة دوال صغيرة لتبني منطقاً معقداً ومقروءاً باستخدام دوال <code>default</code> المدمجة داخل الواجهات الوظيفية:</p><h3 id="419e583e-5844-802b-a511-d15e37d39631" class="" dir="auto">1. دمج الشروط في <code>Predicate</code> (<code>and</code>, <code>or</code>, <code>negate</code>)</h3><p id="419e583e-5844-8008-ae4a-da93e14ba4d8" class="" dir="auto">Java</p><h1 id="419e583e-5844-8048-97b6-c28dc0684061" class="" dir="auto"></h1><pre id="419e583e-5844-8062-890b-ee13620b955f" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">Predicate&lt;User&gt; isActive = User::isActive;
+Predicate&lt;User&gt; isAdmin = user -&gt; user.getRole().equals(&quot;ADMIN&quot;);
+Predicate&lt;User&gt; isBanned = User::isBanned;
+
+// مستخدم نشط، وليس محظوراً، وإما أن يكون أدمن أو لديه صلاحية خاصة
+Predicate&lt;User&gt; canAccessDashboard = isActive.and(isBanned.negate()).and(isAdmin);
+
+boolean allowed = canAccessDashboard.test(currentUser);</code></pre><h3 id="419e583e-5844-80a3-8e24-f7958bffe80d" class="" dir="auto">2. تسلسل التحويلات في <code>Function</code> (<code>andThen</code> مقابل <code>compose</code>)</h3><p id="419e583e-5844-80b8-b5b3-eebac728abfa" class="" dir="auto">هذا موضع سؤال مشهور جداً في المقابلات التقنية:</p><ul id="419e583e-5844-8002-8265-e5cac8446a18" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code><strong>f1.andThen(f2)</strong></code>: ينفذ <code>f1</code> <strong>أولاً</strong>، ثم يأخذ نتيجتها ويمررها إلى <code>f2</code> (من اليسار لليمين).</li></ul><ul id="419e583e-5844-8098-bb09-f86773bd729f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code><strong>f1.compose(f2)</strong></code>: ينفذ <code>f2</code> <strong>أولاً</strong>، ثم يأخذ نتيجتها ويمررها إلى <code>f1</code> (من اليمين لليسار - عكس الترتيب).</li></ul><p id="419e583e-5844-80f6-9356-f9f0fddd74a0" class="" dir="auto">Java</p><h1 id="419e583e-5844-80d2-b310-c5fe5c865ea1" class="" dir="auto"></h1><pre id="419e583e-5844-8077-8f7a-cda7dea1a680" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">Function&lt;Integer, Integer&gt; multiplyBy2 = x -&gt; x * 2;
+Function&lt;Integer, Integer&gt; add10 = x -&gt; x + 10;
+
+// 1. andThen: اضرب في 2 أولاً (3 * 2 = 6)، ثم اجمع 10 (6 + 10 = 16)
+int res1 = multiplyBy2.andThen(add10).apply(3); // النتيجة: 16
+
+// 2. compose: اجمع 10 أولاً (3 + 10 = 13)، ثم اضرب في 2 (13 * 2 = 26)
+int res2 = multiplyBy2.compose(add10).apply(3); // النتيجة: 26</code></pre><h3 id="419e583e-5844-8011-962b-c49718bf102e" class="" dir="auto">3. تسلسل الأوامر في <code>Consumer</code> (<code>andThen</code>)</h3><p id="419e583e-5844-80a8-9227-e8c5db46e2ce" class="" dir="auto">Java</p><h1 id="419e583e-5844-80f4-ba11-cf12c2b6aaf0" class="" dir="auto"></h1><pre id="419e583e-5844-8019-b4ff-d2f57bce1d90" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">Consumer&lt;String&gt; saveToDb = data -&gt; System.out.println(&quot;Saving to PostgreSQL: &quot; + data);
+Consumer&lt;String&gt; sendAuditLog = data -&gt; System.out.println(&quot;Logging audit event: &quot; + data);
+
+// ينفذ الحفظ أولاً، ثم يسجل الحدث في اللوج تلقائياً
+Consumer&lt;String&gt; processOrder = saveToDb.andThen(sendAuditLog);
+processOrder.accept(&quot;Order #99&quot;);</code></pre><h2 id="419e583e-5844-8088-84e1-ca5fc5cfc9b3" class="" dir="auto">6. أسرار المستوى المتقدم (الفخاخ البرمجية وقواعد المعماريين)</h2><p id="419e583e-5844-8093-81cf-d76a97a58bb0" class="" dir="auto">لإبهار الطلاب وتجنب أخطاء الإنتاج (Production Bugs)، احرص على توضيح هذه النقاط الأربع:</p><ol type="1" id="419e583e-5844-807d-9bee-c17db670e336" class="numbered-list" start="1" dir="auto"><li><strong>قاعدة </strong><code><strong>Effectively Final</strong></code><strong> (لماذا يُمنع تعديل المتغيرات المحلية داخل Lambda؟):</strong><p id="419e583e-5844-805a-ba09-f11009b496f2" class="" dir="auto">إذا عرّفت متغيراً محلياً داخل دالة (مثل <code>int count = 0;</code>) وحاولت تغييره داخل تعبير Lambda (<code>count++</code>)، سيرفض المترجم ذلك.</p><ul id="419e583e-5844-8069-914d-faa2239f0d0c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>السبب المعماري:</strong> المتغير المحلي يعيش في ذاكرة <strong>Stack</strong> ويموت بمجرد انتهاء الدالة، بينما الـ Lambda قد يُرسل ليُنفذ في Thread آخر أو في وقت لاحق، لذا تأخذ الجافا <strong>نسخة (Copy)</strong> من قيمة المتغير. ولضمان عدم حدوث تضارب بين النسخة والأصل (Race Condition)، تشترط الجافا ألا تتغير قيمة هذا المتغير أبداً (إما <code>final</code> صراحةً أو <code>Effectively Final</code> أي لم يُعد تعيينه). <em>(ملاحظة: يمكن تعديل متغيرات الكلاس Instance Variables لأنها تعيش في الـ Heap).</em></li></ul></li></ol><ol type="1" id="419e583e-5844-80ad-b5bd-ceecb49fb08c" class="numbered-list" start="2" dir="auto"><li><strong>الفرق في نطاق الكلمة المفتاحية </strong><code><strong>this</strong></code><strong>:</strong><ul id="419e583e-5844-809b-bf09-e1b6ea74e54c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">داخل <strong>Anonymous Inner Class</strong>: كلمة <code>this</code> تشير إلى الكلاس المجهول نفسه.</li></ul><ul id="419e583e-5844-8091-92ed-f6b14599861d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">داخل <strong>Lambda Expression</strong>: الـ Lambda لا ينشئ نطاقاً (Scope) جديداً، لذا كلمة <code>this</code> تشير إلى <strong>الكلاس الخارجي</strong> الذي كُتبت بداخله الـ Lambda.</li></ul></li></ol><ol type="1" id="419e583e-5844-80f4-bd1b-e591bb3289dc" class="numbered-list" start="3" dir="auto"><li><strong>فخ الاستثناءات المُجبرة (Checked Exceptions):</strong><p id="419e583e-5844-8077-9805-c0c1dee75d2f" class="" dir="auto">الدوال القياسية في <code>java.util.function</code> (مثل <code>Function.apply</code>) لا تحتوي في توقيعها على <code>throws Exception</code>. لذلك، إذا استدعيت دالة ترمي Checked Exception (مثل <code>IOException</code> أو <code>SQLException</code>) داخل Lambda، سيعترض المترجم.</p><ul id="419e583e-5844-80fc-b311-e641803be9f3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الحل الاحترافي:</strong> إما تغليف الاستدعاء بـ <code>try-catch</code> وتحويله إلى <code>RuntimeException</code>، أو إنشاء Functional Interface مخصص لك يدعم الاستثناءات (مثل <code>@FunctionalInterface public interface ThrowingFunction&lt;T, R, E extends Exception&gt; { R apply(T t) throws E; }</code>).</li></ul></li></ol><ol type="1" id="419e583e-5844-80fb-89a7-c09e1cd2b477" class="numbered-list" start="4" dir="auto"><li><strong>متى تنشئ Functional Interface خاصاً بك بدلاً من الجاهز؟</strong><p id="419e583e-5844-8064-9ccb-f978c458ff0a" class="" dir="auto">استخدم حزمة <code>java.util.function</code> في 95% من الحالات، ولا تنشئ واجهة مخصصة إلا في حالتين:</p><ul id="419e583e-5844-8015-92e5-c9e402e32266" class="bulleted-list" dir="auto"><li style="list-style-type:disc">عندما تحتاج إلى <strong>3 مدخلات أو أكثر</strong> (لأن جافا توفر مدخلين كحد أقصى <code>BiFunction</code>).</li></ul><ul id="419e583e-5844-8042-8dc9-e20a83e44b93" class="bulleted-list" dir="auto"><li style="list-style-type:disc">عندما يكون للواجهة <strong>معنى تجاري أو أمني واضح جداً (Domain Semantics)</strong> يزيد من مقروئية الكود، مثل واجهة <code>Customizer&lt;T&gt;</code> الشهيرة في <strong>Spring Security 6</strong> التي ستراها في كل سطر تقريباً في كتاب Laurentiu Spilca (مثل <code>http.cors(cors -&gt; ...)</code>).</li></ul></li></ol><p id="419e583e-5844-8019-922c-f674f52b43d2" class="" dir="auto">هل ترغب في أن نصمم معاً تمارين تطبيقية متدرجة من السهل إلى الصعب (مع حلولها) لتعطيها للطلاب في نهاية شرحك، أم ننتقل لرؤية كيف يوظف Spring Security 6 هذه الواجهات عملياً؟</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
