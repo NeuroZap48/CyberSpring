@@ -1,0 +1,909 @@
+<html lang="ar-SA" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>بدون عنوان</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="419e583e-5844-8052-82f5-cd1d1dcf3608" class="page sans"><header><h1 class="page-title" dir="auto"></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h2 id="41fe583e-5844-8075-a4f7-d02bd942b216" class="" dir="auto">المحور الأول: أنواع التحويل في الجافا بالتفصيل (Multiple Types of Casting)</h2><p id="41fe583e-5844-8084-9abb-eb0ff4ec28ca" class="" dir="auto">التحويل (<code>Casting</code>) في لغة الجافا هو عملية تغيير نوع البيانات من نوع إلى آخر، وينقسم في الجافا إلى عائلتين مختلفتين تماماً في طريقة العمل والقواعد: <strong>تحويل الأنواع البدائية (</strong><code><strong>Primitive Casting</strong></code><strong>)</strong> و<strong>تحويل الكائنات والمراجع (</strong><code><strong>Reference / Object Casting</strong></code><strong>)</strong>.</p><h3 id="41fe583e-5844-80d7-aa85-d45fa28d19c1" class="" dir="auto">أولاً: تحويل الأنواع البدائية (Primitive Type Casting)</h3><p id="41fe583e-5844-80d4-ba30-c548c1704cca" class="" dir="auto">يتعامل هذا النوع مع القيم الرقمية والحرفية البسيطة (مثل <code>int</code> و <code>double</code> و <code>long</code> و <code>byte</code>)، وينقسم إلى نوعين:</p><ul id="41fe583e-5844-8018-8883-d7b6378650ec" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>التحويل التلقائي أو التوسيع (</strong><code><strong>Widening / Implicit Casting</strong></code><strong>):</strong><br/>يحدث عندما تنقل قيمة من نوع صغير المساحة في الذاكرة إلى نوع أكبر مساحة (من الصغير إلى الكبير: <code>byte</code> ثم <code>short</code> ثم <code>int</code> ثم <code>long</code> ثم <code>float</code> ثم <code>double</code>).<ul id="41fe583e-5844-80d2-9c25-e23495e945c2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>لماذا هو تلقائي؟</strong> لأنه آمن بنسبة مئة بالمئة ولا يوجد أي احتمال لفقدان جزء من الرقم، لذلك يقوم به المترجم (<code>Compiler</code>) تلقائياً دون تدخل منك.</li></ul></li></ul><ul id="41fe583e-5844-806c-92ad-c6d78d325dda" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>التحويل اليدوي أو التضييق (</strong><code><strong>Narrowing / Explicit Casting</strong></code><strong>):</strong><br/>يحدث عندما تحاول وضع قيمة كبيرة المساحة داخل متغير أصغر مساحة (من الكبير إلى الصغير، مثل تحويل <code>double</code> إلى <code>int</code>).<ul id="41fe583e-5844-8097-9edf-e04a13a9fa3f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>لماذا هو يدوي؟</strong> لأن هناك احتمالاً لفقدان البيانات (مثل ضياع الكسور العشرية أو تجاوز الحد الأقصى للمتغير <code>Overflow</code>)، فيجبرك المترجم على كتابة النوع بين قوسين لتتحمل المسؤولية.</li></ul></li></ul><p id="41fe583e-5844-80af-985e-e3798641c2e5" class="" dir="auto">Java</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js" integrity="sha512-xKcnbsdT0KMoA4yrozkqZM1XJVTrPsjdQwvigxlAlxEDu8YDvC/jl+LfVqn0fY3Vs6m2y4a89JCHEIA/Z9zpmQ==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><pre id="41fe583e-5844-80e3-b0f6-c5c1096398d3" class="code code-wrap" data-notion-code-syntax="java"><code class="language-java" style="white-space:pre-wrap;word-break:break-all">// التوسيع التلقائي (من صغير لكبير - آمن)
+int smallNumber = 50;
+double bigNumber = smallNumber; // النتيجة: 50.0 (تلقائي)
+
+// التضييق اليدوي (من كبير لصغير - قد يفقد بيانات)
+double price = 99.95;
+int roundedPrice = (int) price; // النتيجة: 99 (ضاع الجزء العشري .95)</code></pre><h3 id="41fe583e-5844-80f5-b669-f5857f09eb4f" class="" dir="auto">ثانياً: تحويل الكائنات والمراجع (Reference / Object Casting)</h3><p id="41fe583e-5844-80a4-8a2a-e6fb10762e54" class="" dir="auto">هذا النوع لا يغيّر الكائن الحقيقي الموجود في الذاكرة (<code>Heap</code>) إطلاقاً، بل يغيّر فقط <strong>&quot;زاوية النظر&quot; أو نوع المؤشر (</strong><code><strong>Reference</strong></code><strong>)</strong> الذي نمسك به هذا الكائن، ويعتمد كلياً على علاقة الوراثة (<code>IS-A Relationship</code>).</p><ul id="41fe583e-5844-8098-afd9-e65d85d38671" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>التحويل للأعلى (</strong><code><strong>Upcasting</strong></code><strong>):</strong><br/>هو إسناد كائن من نوع <strong>الابن (</strong><code><strong>Child</strong></code><strong>)</strong> إلى متغير مرجعي من نوع <strong>الأب (</strong><code><strong>Parent</strong></code><strong>)</strong> أو <strong>الواجهة (</strong><code><strong>Interface</strong></code><strong>)</strong>.<ul id="41fe583e-5844-80db-9e83-dc019862b341" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>حكمه:</strong> يحدث <strong>تلقائياً</strong> (Implicit) بدون أقواس تحويل؛ لأن كل ابن هو بالضرورة نوع من أبيه (كل كلب <code>Dog</code> هو حيوان <code>Animal</code>).</li></ul><ul id="41fe583e-5844-802b-bccc-dfe5214b73e0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>فائدته:</strong> هو أساس تعدد الأشكال (<code>Polymorphism</code>)؛ إذ يتيح لك كتابة دوال تستقبل <code>Animal</code> أو <code>List</code> وتتعامل مع أي ابن يمرر لها بمرونة عالية.</li></ul></li></ul><ul id="41fe583e-5844-80e1-8150-ee0f210a2102" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>التحويل للأسفل (</strong><code><strong>Downcasting</strong></code><strong>):</strong><br/>هو إرجاع المؤشر من نوع <strong>الأب (</strong><code><strong>Parent</strong></code><strong>)</strong> إلى نوع <strong>الابن (</strong><code><strong>Child</strong></code><strong>)</strong> لكي تتمكن من الوصول إلى الدوال الخاصة بالابن فقط.<ul id="41fe583e-5844-80f3-a5b6-e2322af66174" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>حكمه:</strong> يجب كتابته <strong>يدوياً</strong> بين قوسين <code>(Child)</code>؛ لأن المترجم لا يضمن أن الأب يحمل هذا الابن تحديداً.</li></ul><ul id="41fe583e-5844-80d7-ac7f-d7b0198addcf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>خطورته:</strong> إذا كان الكائن الفعلي في الذاكرة من نوع <code>Cat</code> وأنت حاولت تحويل المؤشر <code>Animal</code> إلى <code>(Dog)</code>، سيمر الكود من المترجم دون خطأ، لكنه <strong>سينهار أثناء التشغيل (</strong><code><strong>Runtime</strong></code><strong>)</strong> ويرمي خطأ <code>ClassCastException</code>.</li></ul></li></ul><p id="41fe583e-5844-808f-ad71-df08271b9044" class="" dir="auto">Java</p><pre id="41fe583e-5844-803e-8f5f-c146138113cd" class="code code-wrap" data-notion-code-syntax="java"><code class="language-java" style="white-space:pre-wrap;word-break:break-all">class Animal{
+    public void eat(){ System.out.println(&quot;Animal eats&quot;); }
+}
+
+class Dog extends Animal{
+    public void bark(){ System.out.println(&quot;Dog barks&quot;); }
+}
+
+class Cat extends Animal{
+    public void meow(){ System.out.println(&quot;Cat meows&quot;); }
+}
+
+public class CastingDemo{
+    public static void main(String[] args){
+        // أولاً: Upcasting (تلقائي من ابن لأب)
+        Animal myAnimal = new Dog();
+        myAnimal.eat(); // يعمل بنجاح
+
+        // ثانياً: Downcasting آمن (يدوي من أب لابن)
+        Dog myDog = (Dog) myAnimal;
+        myDog.bark(); // الآن نستطيع استدعاء دوال Dog الخاصة
+
+        // ثالثاً: Downcasting قاتل (يرمي ClassCastException أثناء التشغيل)
+        Animal anotherAnimal = new Cat();
+        Dog wrongDog = (Dog) anotherAnimal; // انهيار! القطة ليست كلباً
+    }
+}</code></pre><h3 id="41fe583e-5844-8078-a58b-d2773336e56f" class="" dir="auto">ثالثاً: الحماية قبل التحويل المعاكس (<code>instanceof</code> و Pattern Matching)</h3><p id="41fe583e-5844-8028-804f-eb5c2ec79bba" class="" dir="auto">لتجنب انهيار السيرفر بسبب <code>ClassCastException</code> عند عمل <code>Downcasting</code>، يجب دائماً فحص نوع الكائن الحقيقي في الذاكرة باستخدام الكلمة المفتاحية <code>instanceof</code>. وفي إصدارات الجافا الحديثة (منذ إصدار جافا السادس عشر)، أُضيفت ميزة <strong>مطابقة الأنماط (</strong><code><strong>Pattern Matching for instanceof</strong></code><strong>)</strong> التي تفحص النوع وتقوم بالتحويل في خطوة واحدة نظيفة:</p><p id="41fe583e-5844-808c-9a1d-fff4ed3c738e" class="" dir="auto">Java</p><pre id="41fe583e-5844-8059-9d92-c4e145aa2373" class="code code-wrap" data-notion-code-syntax="java"><code class="language-java" style="white-space:pre-wrap;word-break:break-all">// الطريقة القديمة
+if (myAnimal instanceof Dog) {
+    Dog d = (Dog) myAnimal;
+    d.bark();
+}
+
+// الطريقة الحديثة الاحترافية (Pattern Matching)
+if (myAnimal instanceof Dog d) {
+    d.bark(); // المتغير d جاهز ومحول تلقائياً داخل هذا النطاق
+}</code></pre><ul id="41fe583e-5844-80c8-9cb5-c3648e1fd7c3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ملاحظة حول التعميمات (</strong><code><strong>Generics</strong></code><strong>):</strong> كما درسنا سابقاً، التعميمات تمنعك من عمل <code>Casting</code> غير آمن بين القوائم؛ فلا يمكنك تحويل <code>List&lt;Dog&gt;</code> إلى <code>List&lt;Animal&gt;</code>، وإذا حاولت إجبار المترجم عبر <code>Raw Types</code> ستتلقى تحذير <code>Unchecked Cast</code> لأن المترجم لا يستطيع التحقق من النوع بعد محو الأنواع (<code>Type Erasure</code>).</li></ul><h2 id="41fe583e-5844-80e8-8f89-d5adcff0619c" class="" dir="auto">المحور الثاني: فهم <code>throws</code> بعد اسم الدالة من الصفر حتى الاحتراف</h2><p id="41fe583e-5844-8035-bb3a-d7c15ecf71b8" class="" dir="auto">لفهم معنى <code>throws</code> التي تأتي بعد اسم الدالة، وتشريح توقيع دالة <code>orElseThrow</code> المعقد، يجب أن نبني الفكرة خطوة بخطوة من الأساس.</p><h3 id="41fe583e-5844-802d-a624-f7e8c506fe27" class="" dir="auto">أولاً: ما الفرق الجوهري بين <code>throw</code> و <code>throws</code>؟</h3><p id="41fe583e-5844-8096-a815-ddfae1a2d2c0" class="" dir="auto">يخلط الكثيرون بين الكلمتين لتشابه الحروف، لكن وظيفة كل واحدة مختلفة تماماً:</p><ul id="41fe583e-5844-807c-bd85-cbe0a3f69c3c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الكلمة </strong><code><strong>throw</strong></code><strong> (بدون حرف s):</strong> تُكتب <strong>داخل جسم الدالة (</strong><code><strong>Method Body</strong></code><strong>)</strong>، وهي فعل أمر يعني: <em>&quot;أوقف التنفيذ الآن وارمِ هذا الكائن من الخطأ فوراً&quot;</em> (تُتبع بكائن خطأ واحد مثل <code>throw new RuntimeException()</code>).</li></ul><ul id="41fe583e-5844-806c-8201-e9d3d753fc5e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الكلمة </strong><code><strong>throws</strong></code><strong> (مع حرف s):</strong> تُكتب <strong>في رأس الدالة بعد الأقواس وقبل القوس المتعرج </strong><code><strong>{</strong></code>، وهي مجرد <strong>&quot;لافتة تحذير&quot; أو إعلان في عقد الدالة</strong> تقول لمن سيستدعي هذه الدالة: <em>&quot;انتبه! هذه الدالة لا تعالج الأخطاء بداخلها؛ إذا حدث خطأ من النوع الفلاني أثناء عملها، فستقذفه في وجهك أنت وعليك أن تتصرف معه!&quot;</em>.</li></ul><h3 id="41fe583e-5844-8072-b13b-c750d8d9d4a5" class="" dir="auto">ثانياً: شجرة الاستثناءات ولماذا أُجبرنا على استخدام <code>throws</code>؟</h3><p id="41fe583e-5844-80b0-8144-f8fabc0cc11d" class="" dir="auto">في لغة الجافا، كل الأخطاء ترث من الجد الأكبر <code>Throwable</code>، وتنقسم إلى عائلتين رئيسيتين تحددان متى تكون <code>throws</code> إجبارية ومتى تكون اختيارية:</p><ul id="41fe583e-5844-8015-a0b9-c26312739ea9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الأخطاء غير المفحوصة (</strong><code><strong>Unchecked Exceptions</strong></code><strong>):</strong><br/>هي كل كلاس يرث من <code>RuntimeException</code> (مثل <code>NullPointerException</code>، <code>IllegalArgumentException</code>، و <code>ResourceNotFoundException</code> التي نصنعها في Spring Boot).<ul id="41fe583e-5844-805f-8cce-f2ab494ac925" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>حكمها مع </strong><code><strong>throws</strong></code><strong>:</strong> <strong>اختيارية تماماً.</strong> المترجم لا يجبرك على كتابة <code>try-catch</code> ولا كتابة <code>throws</code> في رأس الدالة؛ لأن هذه الأخطاء غالباً تنتج عن أخطاء منطقية في الكود وتنتشر للأعلى تلقائياً حتى يمسكها <code>@RestControllerAdvice</code> في Spring Boot.</li></ul></li></ul><ul id="41fe583e-5844-80df-b1bc-e6fd5eb0db0b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الأخطاء المفحوصة (</strong><code><strong>Checked Exceptions</strong></code><strong>):</strong><br/>هي كل كلاس يرث من <code>Exception</code> <strong>مباشرة دون المرور بـ </strong><code><strong>RuntimeException</strong></code> (مثل <code>IOException</code> عند قراءة ملف، أو <code>SQLException</code> عند الاتصال بقاعدة بيانات).<ul id="41fe583e-5844-8014-996c-cd005b2d2d44" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>حكمها مع </strong><code><strong>throws</strong></code><strong>:</strong> <strong>إجبارية بقوة القانون!</strong> تفرض الجافا هنا قاعدة تُسمى <strong>&quot;امسك أو أعلن&quot; (</strong><code><strong>Catch or Specify</strong></code><strong>)</strong>. إذا كتبت سطر كود قد يرمي <code>IOException</code>، فالمترجم يرفض ترجمة البرنامج ويضع خطاً أحمر ما لم تقم بأحد أمرين:<ul id="41fe583e-5844-8087-b1ad-dce523f9d6aa" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>الحل الأول (</strong><code><strong>Catch</strong></code><strong>):</strong> تغلف الكود بـ <code>try { ... } catch (IOException e) { ... }</code> وتعالج المشكلة داخل دالتك.</li></ul><ul id="41fe583e-5844-802f-8829-f13c389256d0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>الحل الثاني (</strong><code><strong>Specify</strong></code><strong>):</strong> تتنصل من المسؤولية وترمي الكرة في ملعب من استدعاك، وذلك بكتابة <code>throws IOException</code> بعد اسم دالتك مباشرة!</li></ul></li></ul></li></ul><p id="41fe583e-5844-800f-8dcc-e7e7498afde3" class="" dir="auto">Java</p><pre id="41fe583e-5844-8082-9cd2-e34e8bd77b5d" class="code code-wrap" data-notion-code-syntax="java"><code class="language-java" style="white-space:pre-wrap;word-break:break-all">// مثال يوضح إجبارية throws مع Checked Exceptions
+public class FileReaderService{
+
+    // الدالة الأولى أعلنت باستخدام throws أنها قد ترمي IOException ولم تعالجه
+    public void readFile(String path) throws IOException{
+        Files.readString(Path.of(path)); // هذا السطر قد يرمي IOException
+    }
+
+    // الدالة الثانية استدعت الأولى، فأصبحت هي أيضاً مجبرة على المعالجة أو التمرير بـ throws
+    public void processUserFile() throws IOException{
+        readFile(&quot;data.txt&quot;);
+    }
+}</code></pre><h3 id="41fe583e-5844-8060-8ee8-c9f9e293aef6" class="" dir="auto">ثالثاً: تشريح توقيع دالة <code>orElseThrow</code> سطراً بسطر (سحر التعميم مع الاستثناءات)</h3><p id="41fe583e-5844-80eb-a68d-c0244ae0d27d" class="" dir="auto">الآن انظر إلى السطر الذي أرسلته من كلاس <code>Optional</code> في مكتبة الجافا القياسية، وسنفكك كل رمز فيه:</p><p id="41fe583e-5844-806e-b040-d90fff7557fe" class="" dir="auto">Java</p><pre id="41fe583e-5844-8031-b8ae-c30ba57674df" class="code code-wrap" data-notion-code-syntax="java"><code class="language-java" style="white-space:pre-wrap;word-break:break-all">public &lt;X extends Throwable&gt; T orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier) throws X</code></pre><p id="41fe583e-5844-8062-b687-cdd75365b79d" class="" dir="auto">لماذا كتب مهندسو الجافا هذا التوقيع بهذا الشكل العبقري؟ لنتتبع أجزاءه الأربعة:</p><ul id="41fe583e-5844-80c5-b6bb-f0a23932326a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الجزء الأول </strong><code><strong>&lt;X Throwable extends&gt;</strong></code><strong>:</strong><br/>هنا تُعرّف الدالة معامل نوع معمم جديد اسمه <code>X</code>، وتقيده بشرط أن يكون <code>X</code> من عائلة <code>Throwable</code> (أي أي نوع استثناء في الجافا، سواء كان <code>Checked</code> أو <code>Unchecked</code>).</li></ul><ul id="41fe583e-5844-80f5-aede-dd1dbb0c3259" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الجزء الثاني </strong><code><strong>T</strong></code><strong> (نوع الإرجاع):</strong><br/>إذا كان صندوق <code>Optional</code> ممتلئاً، فستُخرج الدالة القيمة الحقيقية من نوع <code>T</code> وتُرجعها لك.</li></ul><ul id="41fe583e-5844-804e-8269-d0a2173520e6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الجزء الثالث </strong><code><strong>(Supplier&lt;? extends X&gt; exceptionSupplier)</strong></code><strong>:</strong><br/>تستقبل الدالة دالة <code>Lambda</code> (من نوع <code>Supplier</code>) وظيفتها إنشاء وإرجاع كائن الخطأ من نوع <code>X</code> (أو أي ابن يرث من <code>X</code>) <strong>فقط إذا كان الصندوق فارغاً</strong>.</li></ul><ul id="41fe583e-5844-807d-b738-e27e8bc6c09f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الجزء الرابع </strong><code><strong>throws X</strong></code><strong> (بعد اسم الدالة):</strong><br/>هنا تكمن العبقرية المسماة <strong>شفافية الاستثناءات (</strong><code><strong>Exception Transparency</strong></code><strong>)</strong>! الدالة تقول للمترجم: <em>&quot;أنا سأرمي نفس نوع الخطأ </em><em><code>X</code></em><em> الذي سيعطيني إياه المبرمج داخل الـ </em><em><code>Supplier</code></em><em>!&quot;</em>.</li></ul><p id="41fe583e-5844-80e3-97e6-fdfecb7a590d" class="" dir="auto"><strong>انظر كيف يتصرف المترجم بناءً على نوع الاستثناء الذي تمرره أنت في الـ </strong><code><strong>Lambda</strong></code><strong>:</strong></p><ul id="41fe583e-5844-8021-9371-f7800cb10dad" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الحالة الأولى (تمرير </strong><code><strong>Unchecked Exception</strong></code><strong> — وهو الشائع في Spring Boot):</strong><br/>عندما تكتب:<code>userRepo.findById(id).orElseThrow(() -&gt; new UserNotFoundException(&quot;Not found&quot;));</code><br/>بما أن <code>UserNotFoundException</code> يرث من <code>RuntimeException</code>، يستنتج المترجم تلقائياً أن <code>X = UserNotFoundException</code> (وهو <code>Unchecked</code>). وبما أن <code>throws X</code> أصبحت تعني <code>throws UserNotFoundException</code>، <strong>فإن المترجم لا يجبرك على كتابة </strong><code><strong>try-catch</strong></code><strong> ولا </strong><code><strong>throws</strong></code><strong> في دالتك!</strong></li></ul><ul id="41fe583e-5844-80ad-b1d7-cedaf9eeef61" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الحالة الثانية (تمرير </strong><code><strong>Checked Exception</strong></code><strong>):</strong><br/>لو كتبت:<code>userRepo.findById(id).orElseThrow(() -&gt; new IOException(&quot;File error&quot;));</code><br/>هنا يستنتج المترجم تلقائياً أن <code>X = IOException</code> (وهو <code>Checked</code>). فتتحول <code>throws X</code> في توقيع <code>orElseThrow</code> إلى <code>throws IOException</code>، <strong>فيجبرك المترجم فوراً على وضع </strong><code><strong>try-catch</strong></code><strong> أو إضافة </strong><code><strong>throws IOException</strong></code><strong> لدالتك!</strong></li></ul><p id="41fe583e-5844-8096-8712-e0f21e746c8d" class="" dir="auto">بهذا التصميم المعمم الواحد، استطاعت دالة <code>orElseThrow</code> خدمة نوعي الاستثناءات في الجافا دون الحاجة لكتابة دالتين منفصلتين.</p><h2 id="41fe583e-5844-8031-b726-eccd62593217" class="" dir="auto">المحور الثالث: الدوال الجاهزة التي يستطيع الابن استخدامها في <code>abstract class</code> و <code>interface</code></h2><p id="41fe583e-5844-8022-9a5d-f00c22f5fd81" class="" dir="auto">عندما يرث كلاس ابن (<code>Child</code>) من كلاس مجرد (<code>abstract class</code>) أو يطبق واجهة (<code>interface</code>)، ما هي الدوال المكتملة الجاهزة التي تصبح متاحة له؟</p><h3 id="41fe583e-5844-801a-8b67-f066d69d32e0" class="" dir="auto">أولاً: في الكلاس المجرد (<code>abstract class</code>)</h3><p id="41fe583e-5844-8030-96d1-cc8ec876e119" class="" dir="auto">الكلاس المجرد هو كلاس حقيقي يمكنه احتواء دوال مكتملة (<code>Concrete Methods</code>) ودوال مجردة (<code>abstract</code>). يستطيع الابن استخدام الدوال الجاهزة التالية:</p><ul id="41fe583e-5844-80e4-8645-cc50813773fb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الدوال العادية المكتملة (</strong><code><strong>public</strong></code><strong> و </strong><code><strong>protected</strong></code><strong>):</strong> يرثها الابن كاملة ويستطيع استدعاءها مباشرة أو عمل <code>Override</code> لتعديلها.</li></ul><ul id="41fe583e-5844-800b-8da6-f3358a039b9b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الدوال المكتملة بدون محدد وصول (</strong><code><strong>Package-Private</strong></code><strong>):</strong> يرثها ويستخدمها الابن بشرط أن يكون الابن في <strong>نفس الحزمة (</strong><code><strong>Package</strong></code><strong>)</strong> الموجودة فيها دالة الأب.</li></ul><ul id="41fe583e-5844-8096-81db-c75f4a69e432" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الدوال النهائية (</strong><code><strong>final</strong></code><strong>):</strong> يرثها الابن ويستطيع <strong>استخدامها واستدعاءها</strong> كدالة جاهزة تماماً، لكن يُمنع عليه عمل <code>Override</code> لتغيير محتواها.</li></ul><ul id="41fe583e-5844-803f-9b06-dfb5db489e62" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الدوال الثابتة (</strong><code><strong>static</strong></code><strong>):</strong> يمكن للابن استدعاءها باسمه أو باسم الأب، لكنها تتبع الكلاس ولا تخضع للوراثة الديناميكية (<code>Overriding</code>).</li></ul><ul id="41fe583e-5844-805b-89a4-e924fde8d7e7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الممنوع على الابن:</strong> الدوال الخاصة (<code>private</code>) داخل الكلاس المجرد تبقى محصورة بداخله فقط، ولا يراها الابن ولا يستطيع استدعاءها.</li></ul><h3 id="41fe583e-5844-8019-837f-d6afe0e6ce10" class="" dir="auto">ثانياً: في الواجهة (<code>interface</code>)</h3><p id="41fe583e-5844-8039-9888-f5ba0b4ee603" class="" dir="auto">تطورت الواجهات في الجافا الحديثة (منذ إصدار جافا الثامن والتاسع) لتحتوي على دوال مكتملة الكود، وتنقسم إلى ثلاثة أنواع تحكم علاقة الابن بها:</p><ul id="41fe583e-5844-80a3-b8a9-d8fd7ff16142" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الدوال الافتراضية (</strong><code><strong>default</strong></code><strong> methods — منذ جافا الثامن):</strong><br/>هي <strong>النوع الوحيد</strong> من الدوال المكتملة في الـ <code>interface</code> الذي <strong>يرثه الابن ويستطيع استخدامه جاهزاً</strong> مباشرة وكأنه مكتوب بداخله، كما يحق للابن عمل <code>Override</code> له إذا أراد.</li></ul><ul id="41fe583e-5844-80cb-bd9b-d670515e5b16" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الدوال الثابتة (</strong><code><strong>static</strong></code><strong> methods — منذ جافا الثامن):</strong><br/>هي دوال مساعدة تابعة للواجهة نفسها فقط؛ <strong>لا يرثها الابن ولا يستطيع استدعاءها عبر كائن الابن ولا عبر اسم كلاس الابن!</strong> الطريقة الوحيدة لاستدعاءها هي كتابة اسم الواجهة مباشرة: <code>InterfaceName.staticMethod()</code>.</li></ul><ul id="41fe583e-5844-801e-8354-c07c2c13f5b7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الدوال الخاصة (</strong><code><strong>private</strong></code><strong> و </strong><code><strong>private static</strong></code><strong> — منذ جافا التاسع):</strong><br/>هي دوال مساعدة داخلية تُكتب لخدمة دوال الـ <code>default</code> أو الـ <code>static</code> داخل نفس الواجهة لتجنب تكرار الكود؛ <strong>لا يراها الابن مطلقاً ولا يستطيع استدعاءها</strong>.</li></ul><table id="41fe583e-5844-80e5-896f-c716f0c2cf21" class="simple-table" dir="rtl"><tbody><tr id="41fe583e-5844-80f5-a997-e37c6535b6dc" dir="rtl"><td id="kglD" class=""><strong>نوع الدالة المكتملة</strong></td><td id="N~fN" class=""><strong>في الكلاس المجرد (abstract class)</strong></td><td id="^N[_" class=""><strong>في الواجهة (interface)</strong></td></tr><tr id="41fe583e-5844-8029-b988-c7b386c90a34" dir="rtl"><td id="kglD" class="">دالة عادية (<code>public</code> / <code>protected</code>)</td><td id="N~fN" class="">يرثها الابن ويستخدمها ويعدلها</td><td id="^N[_" class="">غير موجودة (تتحول لـ <code>abstract</code> تلقائياً)</td></tr><tr id="41fe583e-5844-8030-954f-fe878b22a98b" dir="rtl"><td id="kglD" class="">دالة افتراضية (<code>default</code>)</td><td id="N~fN" class="">غير مسموحة (خاصة بالواجهات فقط)</td><td id="^N[_" class=""><strong>يرثها الابن ويستخدمها جاهزة ويستطيع تعديلها</strong></td></tr><tr id="41fe583e-5844-801d-ae01-d9a7c0899007" dir="rtl"><td id="kglD" class="">دالة نهائية (<code>final</code>)</td><td id="N~fN" class="">يرثها الابن ويستخدمها (ممنوع تعديلها)</td><td id="^N[_" class="">غير مسموحة في الواجهات</td></tr><tr id="41fe583e-5844-808d-a72e-dfa0d7d348a1" dir="rtl"><td id="kglD" class="">دالة ثابتة (<code>static</code>)</td><td id="N~fN" class="">متاحة للابن عبر اسم الكلاس</td><td id="^N[_" class=""><strong>حصرية للواجهة فقط (لا يرثها الابن أبداً)</strong></td></tr><tr id="41fe583e-5844-8005-852b-cb3d38945888" dir="rtl"><td id="kglD" class="">دالة خاصة (<code>private</code>)</td><td id="N~fN" class="">مخفية تماماً عن الابن</td><td id="^N[_" class="">مخفية تماماً عن الابن</td></tr></tbody></table><h2 id="41fe583e-5844-8055-96d7-edeb3c17d418" class="" dir="auto">المحور الرابع: ما هي الدوال التي نستطيع استدعاءها عبر كائن الابن (<code>Child Object</code>)؟</h2><p id="41fe583e-5844-80ea-a920-cb63d0f301fe" class="" dir="auto">لتحديد الدوال التي يُسمح لك بكتابتها بعد النقطة <code>obj.</code>، تطبق الجافا قاعدة ذهبية تفصل بين <strong>وقت الكتابة (</strong><code><strong>Compile-time</strong></code><strong>)</strong> و<strong>وقت التشغيل (</strong><code><strong>Runtime</strong></code><strong>)</strong>:</p><blockquote id="41fe583e-5844-807c-99f0-c01c038d7fb4" class="" dir="auto"><strong>القاعدة الذهبية:</strong> المترجم (<code>Compiler</code>) ينظر دائماً إلى <strong>نوع المؤشر الموجود على اليسار (</strong><code><strong>Reference Type</strong></code><strong>)</strong> ليقرر ما هي الدوال المسموح باستدعاءها، بينما ينظر نظام التشغيل (<code>JVM</code>) إلى <strong>نوع الكائن الحقيقي الموجود على اليمين (</strong><code><strong>Object Type</strong></code><strong>)</strong> ليقرر أي نسخة من الكود سينفذها!</blockquote><p id="41fe583e-5844-8072-8a79-c8bec340822d" class="" dir="auto">بناءً على هذه القاعدة، لدينا حالتان أساسيتان عند التعامل مع كائن الابن:</p><h3 id="41fe583e-5844-805a-bf8f-f2dcf5d6df8b" class="" dir="auto">الحالة الأولى: المؤشر من نوع الابن (<code>Child obj = new Child();</code>)</h3><p id="41fe583e-5844-806c-adc6-eba658fad57f" class="" dir="auto">هنا يرى المترجم كل ما يملكه الابن وكل ما ورثه من عائلته، لذلك تستطيع استدعاء <strong>أربع مجموعات من الدوال</strong> عبر <code>obj</code>:</p><ul id="41fe583e-5844-8000-bcd7-e3ae20c167cd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>كل دوال الابن الخاصة به:</strong> أي دالة جديدة عرّفها الابن داخل كلاسه (<code>public</code> أو <code>protected</code> أو <code>package-private</code> في نفس الحزمة).</li></ul><ul id="41fe583e-5844-8017-979d-e3067c63481e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>كل دوال الأب الموروثة (</strong><code><strong>abstract class</strong></code><strong> أو </strong><code><strong>Normal class</strong></code><strong>):</strong> سواء كانت دوال عادية مكتملة، أو دوال <code>final</code>، أو دوال مجردة قام الابن بتنفيذها.</li></ul><ul id="41fe583e-5844-80d6-b3a0-ec7d95727363" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>كل الدوال الافتراضية (</strong><code><strong>default</strong></code><strong>) والتجريدية المنفذة من الواجهات (</strong><code><strong>Interfaces</strong></code><strong>):</strong> التي يطبقها الابن (<code>implements</code>).</li></ul><ul id="41fe583e-5844-8009-8ece-ef7c4281fc78" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>كل دوال الجد الأكبر (</strong><code><strong>Object</strong></code><strong>):</strong> مثل <code>toString()</code> و <code>equals()</code> و <code>hashCode()</code> و <code>getClass()</code>؛ لأن كل كلاس في الجافا يرث من <code>Object</code> ضمنياً.</li></ul><p id="41fe583e-5844-8028-a3f5-d589f6d9c9a9" class="" dir="auto"><strong>ما الذي لا تستطيع استدعاءه عبر </strong><code><strong>obj</strong></code><strong> حتى في هذه الحالة؟</strong></p><ul id="41fe583e-5844-80ce-955b-f5ed02837d99" class="bulleted-list" dir="auto"><li style="list-style-type:disc">الدوال الخاصة (<code>private</code>) في الأب أو الواجهة.</li></ul><ul id="41fe583e-5844-8000-9c40-de34573b88c9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">الدوال الثابتة (<code>static</code>) المعرفة داخل الـ <code>interface</code> (لأنها لا تُورَّث للكلاس الابن).</li></ul><h3 id="41fe583e-5844-802a-80a7-cc4b14629eca" class="" dir="auto">الحالة الثانية: المؤشر من نوع الأب أو الواجهة (<code>Parent obj = new Child();</code> — تعدد الأشكال)</h3><p id="41fe583e-5844-803f-8b68-cd9119d89b8f" class="" dir="auto">هذه هي الحالة الأكثر استخداماً في Spring Boot (مثل <code>List&lt;String&gt; list = new ArrayList&lt;&gt;()</code> أو <code>PaymentService service = new StripePaymentService()</code>). هنا تتغير القواعد كالتالي:</p><ul id="41fe583e-5844-80f0-b2a3-f7ce7f9e9447" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>المسموح استدعاؤه عبر </strong><code><strong>obj</strong></code><strong>:</strong> فقط الدوال المُعلنة داخل كلاس <strong>الأب (</strong><code><strong>Parent</strong></code><strong>)</strong> أو <strong>الواجهة (</strong><code><strong>Interface</strong></code><strong>)</strong> (بالإضافة إلى دوال كلاس <code>Object</code>).</li></ul><ul id="41fe583e-5844-80e9-85b2-e0f6019436a3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الممنوع استدعاؤه عبر </strong><code><strong>obj</strong></code><strong>:</strong> <strong>يُمنع عليك استدعاء أي دالة جديدة أضافها الابن </strong><code><strong>Child</strong></code><strong> من عنده ولم تكن موجودة في الأب!</strong> المترجم سيُظهر خطأ أحمر فوراً لأنه ينظر لنوع المؤشر <code>Parent</code> على اليسار ولا يرى فيه هذه الدالة. (للوصول إليها يجب عمل <code>Downcasting</code> أولاً كما شرحنا في المحور الأول).</li></ul><ul id="41fe583e-5844-8010-8c35-ffa02cb675d7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>أي نسخة تُنفَّذ عند التشغيل؟</strong> إذا كانت الدالة موجودة في الأب وقام الابن بعمل <code>Override</code> لها، فسيتم تنفيذ <strong>نسخة الابن</strong> تلقائياً بفضل الربط الديناميكي (<code>Dynamic Method Dispatch</code>).</li></ul><p id="41fe583e-5844-8049-9931-c07de7049b32" class="" dir="auto">Java</p><pre id="41fe583e-5844-80c0-b398-c57ad7400ab0" class="code code-wrap" data-notion-code-syntax="java"><code class="language-java" style="white-space:pre-wrap;word-break:break-all">interface Notifiable{
+    void sendAlert(); // دالة مجردة
+
+    default void logNotification(){ // دالة جاهزة يرثها الابن
+        System.out.println(&quot;Logging notification...&quot;);
+    }
+
+    static void printSystemInfo(){ // دالة ثابتة حصرية للواجهة
+        System.out.println(&quot;Notification System v1&quot;);
+    }
+}
+
+abstract class BaseUser{
+    public void login(){ // دالة جاهزة في الكلاس المجرد
+        System.out.println(&quot;User logged in&quot;);
+    }
+
+    public abstract void accessDashboard(); // دالة مجردة
+}
+
+class AdminUser extends BaseUser implements Notifiable{
+    @Override
+    public void accessDashboard(){
+        System.out.println(&quot;Admin Dashboard opened&quot;);
+    }
+
+    @Override
+    public void sendAlert(){
+        System.out.println(&quot;Admin Alert sent!&quot;);
+    }
+
+    // دالة خاصة بالابن فقط
+    public void deleteDatabase(){
+        System.out.println(&quot;Database deleted!&quot;);
+    }
+}
+
+public class ObjectMethodsDemo{
+    public static void main(String[] args){
+        // الحالة الأولى: المؤشر من نوع الابن (كل شيء متاح)
+        AdminUser admin = new AdminUser();
+        admin.login();             // جاهزة من BaseUser
+        admin.accessDashboard();   // منفذة في AdminUser
+        admin.logNotification();   // جاهزة (default) من Notifiable
+        admin.sendAlert();         // منفذة في AdminUser
+        admin.deleteDatabase();    // خاصة بـ AdminUser
+        admin.toString();          // موروثة من Object
+
+        // admin.printSystemInfo(); // خطأ! الدوال static في الـ interface لا تُستدعى عبر الابن
+        Notifiable.printSystemInfo(); // الصحيح: تُستدعى باسم الواجهة فقط
+
+        // الحالة الثانية: المؤشر من نوع الأب (Upcasting)
+        BaseUser polyUser = new AdminUser();
+        polyUser.login();           // مسموح (موجود في BaseUser)
+        polyUser.accessDashboard(); // مسموح وينفذ نسخة AdminUser
+        // polyUser.deleteDatabase(); // خطأ ترجمة! المؤشر BaseUser لا يرى دوال الابن الخاصة
+    }
+}</code></pre><p id="41fe583e-5844-8044-a355-ef5f00121a60" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+<style> html, body { background-color: #191919 !important; color: #e6e6e6 !important; } h1, h2, h3, p, li, blockquote { color: #e6e6e6 !important; } table, th, td { border-color: rgba(255, 255, 255, 0.18) !important; color: #e6e6e6 !important; } th, .simple-table-header-color { background-color: #252525 !important; color: #ffffff !important; } blockquote { border-color: #666666 !important; } pre.code, pre.code code { direction: ltr !important; text-align: left !important; white-space: pre !important; word-break: normal !important; overflow-x: auto !important; background-color: #1e1f22 !important; color: #bcbec4 !important; font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace !important; font-size: 14px !important; line-height: 1.6 !important; text-shadow: none !important; } pre.code { border: 1px solid #393b40 !important; border-radius: 8px !important; padding: 1.2em !important; } p code, li code, td code { direction: ltr !important; display: inline-block !important; background-color: #2b2d30 !important; color: #cf8e6d !important; padding: 0.1em 0.45em !important; border-radius: 4px !important; font-family: 'JetBrains Mono', Consolas, monospace !important; } .token { text-shadow: none !important; background: transparent !important; } .token.comment { color: #7a7e85 !important; font-style: italic !important; } .token.keyword { color: #cf8e6d !important; } .token.string, .token.char { color: #6aab73 !important; } .token.number, .token.boolean { color: #2aacb8 !important; } .token.function { color: #56a8f5 !important; } .token.class-name { color: #e5c07b !important; } .token.annotation { color: #b3ae60 !important; } .token.operator, .token.punctuation { color: #bcbec4 !important; } </style> 

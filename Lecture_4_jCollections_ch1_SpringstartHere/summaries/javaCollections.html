@@ -1,0 +1,827 @@
+<html lang="ar-SA" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>بدون عنوان</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="41fe583e-5844-806c-9345-f8bc4654d96d" class="page sans"><header><h1 class="page-title" dir="auto"></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h2 id="41fe583e-5844-8096-a6f9-db75e8294e30" class="" dir="auto">المحور الأول: الذاكرة في الجافا (Stack vs Heap) وعلاقتها بالـ Collections</h2><p id="41fe583e-5844-8034-b03f-c9e7434c999c" class="" dir="auto">لفهم كيف تعمل هياكل البيانات في الجافا بسرعة وكفاءة، يجب أولاً أن نرى أين تعيش هذه البيانات داخل ذاكرة الوصول العشوائي (<code>RAM</code>). تقسم آلة الجافا الافتراضية (<code>JVM</code>) الذاكرة أثناء تشغيل البرنامج إلى منطقتين رئيسيتين:</p><h3 id="41fe583e-5844-8098-a01a-d8f914fd579d" class="" dir="auto">أولاً: ذاكرة المكدس (Stack Memory)</h3><ul id="41fe583e-5844-805d-8554-d4e90c9a3e60" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ماذا تخزن؟</strong> تخزن استدعاءات الدوال (<code>Method Frames</code>)، والمتغيرات المحلية البدائية (<code>Primitives</code> مثل <code>int</code> و <code>double</code>)، والأهم: <strong>المؤشرات أو المراجع (</strong><code><strong>References</strong></code><strong>)</strong> التي تشير إلى الكائنات.</li></ul><ul id="41fe583e-5844-8020-94a8-ed08aa1c12d8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>خصائصها:</strong> سريعة جداً، منظمة بنظام الداخل أخيراً يخرج أولاً (<code>LIFO</code>)، وكل خيط تنفيذ (<code>Thread</code>) في السيرفر يملك ذاكرة <code>Stack</code> مستقلة خاصة به، وبمجرد انتهاء الدالة يُمسح إطارها تلقائياً.</li></ul><h3 id="41fe583e-5844-8003-abbe-d3e2a929e002" class="" dir="auto">ثانياً: ذاكرة الكومة (Heap Memory)</h3><ul id="41fe583e-5844-808b-bfa0-fe5f7b8caa1c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ماذا تخزن؟</strong> هي المساحة الضخمة المشتركة التي تُحجز فيها <strong>جميع الكائنات الحقيقية (</strong><code><strong>Objects</strong></code><strong>)</strong>، بما في ذلك كائنات الـ <code>Collections</code> نفسها، والمصفوفات الداخلية بداخلها، والعناصر المخزنة فيها.</li></ul><ul id="41fe583e-5844-80a1-a646-c1a2861c7d88" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>خصائصها:</strong> أبطأ نسبياً من الـ <code>Stack</code> في الحجز، ومشتركة بين كل خيوط التنفيذ (<code>Threads</code>)، ويدير تنظيفها جامع القمامة (<code>Garbage Collector</code>).</li></ul><h3 id="41fe583e-5844-8067-8df7-fefbfd287682" class="" dir="auto">كيف يجلس الـ <code>Collection</code> بين الـ <code>Stack</code> والـ <code>Heap</code>؟</h3><p id="41fe583e-5844-8068-830d-ce86b62e04a1" class="" dir="auto">عندما تكتب السطر التالي داخل دالة في مشروعك:</p><p id="41fe583e-5844-8062-8478-d7533d6eec4a" class="" dir="auto">Java</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js" integrity="sha512-xKcnbsdT0KMoA4yrozkqZM1XJVTrPsjdQwvigxlAlxEDu8YDvC/jl+LfVqn0fY3Vs6m2y4a89JCHEIA/Z9zpmQ==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><pre id="41fe583e-5844-8033-9bfd-e881354c8fea" class="code code-wrap" data-notion-code-syntax="java"><code class="language-java" style="white-space:pre-wrap;word-break:break-all">List&lt;String&gt; names = new ArrayList&lt;&gt;();
+names.add(&quot;Mohanad&quot;);</code></pre><p id="41fe583e-5844-80fa-89fd-f9760a34b8f4" class="" dir="auto">يحدث في الذاكرة ما يلي:</p><ul id="41fe583e-5844-80be-95b5-e5ac605733da" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>في الـ </strong><code><strong>Stack</strong></code><strong>:</strong> يُحجز متغير مرجعي صغير اسمه <code>names</code> يحمل عنوان الذاكرة (مثل <code>0x4A1F</code>) فقط.</li></ul><ul id="41fe583e-5844-806e-96b7-df6accfec6ab" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>في الـ </strong><code><strong>Heap</strong></code><strong>:</strong> يُنشأ كائن <code>ArrayList</code> الحقيقي، وبداخله مصفوفة <code>Object[]</code>، وتُحجز الخانة الأولى فيها لتشير إلى كائن النص <code>&quot;Mohanad&quot;</code> الموجود هو الآخر في مكان ما داخل الـ <code>Heap</code>.</li></ul><p id="41fe583e-5844-8018-b221-c7f87211edcf" class="" dir="auto"><strong>تنبيه مهم للتمييز:</strong> لا تخلط بين <strong>ذاكرة الـ </strong><code><strong>Stack</strong></code><strong> (</strong><code><strong>Stack Memory</strong></code><strong>)</strong> كجزء من الـ RAM، وبين <strong>هيكل البيانات </strong><code><strong>Stack</strong></code><strong> (</strong><code><strong>Stack Data Structure</strong></code><strong>)</strong> الذي هو مجرد كلاس في الجافا يعيش هو وعناصره داخل الـ <code>Heap</code>!</p><h3 id="41fe583e-5844-8010-9951-f364bf5d6939" class="" dir="auto">لماذا تمنع الجافا تخزين الأنواع البدائية مثل <code>List&lt;int&gt;</code>؟</h3><p id="41fe583e-5844-80ff-80bd-e5c7fbea737e" class="" dir="auto">لأن التعميمات (<code>Generics</code>) والـ <code>Collections</code> مصممة لتتعامل مع <strong>مراجع كائنات (</strong><code><strong>Object References</strong></code><strong>)</strong> في الـ <code>Heap</code> فقط. لذلك عندما تكتب <code>List&lt;Integer&gt;</code> وتضيف الرقم <code>5</code>، تقوم الجافا بعملية تغليف تلقائي (<code>Autoboxing</code>) لتحويل الرقم البدائي الصغير إلى كائن <code>Integer</code> كامل في الـ <code>Heap</code>، مما يستهلك مساحة ذاكرة أكبر (حوالي ستة عشر بايت للكائن بدلاً من أربعة بايت للرقم البدائي).</p><h2 id="41fe583e-5844-80f5-b9c8-ed7aa0276109" class="" dir="auto">المحور الثاني: لماذا وُجدت الـ Collections؟ والمعمارية الكاملة</h2><h3 id="41fe583e-5844-80ad-ad93-da3d2f22db33" class="" dir="auto">المشكلة التي حلتها (لماذا لم نكتفِ بالمصفوفات العادية <code>Arrays</code>؟)</h3><p id="41fe583e-5844-8046-8f2c-f073fbd59509" class="" dir="auto">المصفوفة التقليدية في الجافا (<code>String[] arr = new String[10]</code>) تعاني من قيود قاتلة في تطبيقات الـ Backend:</p><ul id="41fe583e-5844-80d2-8753-eae208de5045" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>حجم ثابت لا يتغير:</strong> إذا امتلأت المصفوفة، لا يمكنك توسيعها؛ بل تضطر لإنشاء مصفوفة أكبر يدوياً ونسخ العناصر إليها.</li></ul><ul id="41fe583e-5844-805f-a19e-c3d0b21b58ce" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>غياب العمليات الجاهزة:</strong> لا توجد دوال جاهزة لإضافة عنصر في المنتصف، أو حذف عنصر مع إزاحة الباقي، أو منع التكرار، أو البحث السريع.</li></ul><p id="41fe583e-5844-80f1-9436-f4ad2fde3206" class="" dir="auto">لذلك صُمم <strong>إطار عمل المجموعات (</strong><code><strong>Java Collections Framework</strong></code><strong>)</strong> ليقدم معمارية موحدة تفصل بين <strong>&quot;ماذا يفعل الهيكل&quot; (</strong><code><strong>Interfaces</strong></code><strong>)</strong> وبين <strong>&quot;كيف يُنفَّذ في الذاكرة&quot; (</strong><code><strong>Implementation Classes</strong></code><strong>)</strong>.</p><h3 id="41fe583e-5844-80d6-b0ea-ea37bd4abbcf" class="" dir="auto">الخريطة الشجرية الكاملة للواجهات والكلاسات</h3><p id="41fe583e-5844-808c-b917-dcf3ccc44a90" class="" dir="auto">ينقسم الإطار إلى عائلتين مستقلتين تماماً: عائلة <code>Collection</code> (تخزن عناصر مفردة)، وعائلة <code>Map</code> (تخزن أزواجاً من مفتاح وقيمة، ولذلك لم يرث <code>Map</code> من <code>Collection</code> لأن دوال مثل <code>add(element)</code> لا تناسب طبيعة المفتاح والقيمة).</p><p id="41fe583e-5844-8043-8e0f-d374d530fd7b" class="" dir="auto">Plaintext</p><pre id="41fe583e-5844-8086-aa4e-fb9f64bbd394" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">العائلة الأولى: العناصر المفردة (Single Elements)
+=================================================
+Iterable (Interface)
+ └── Collection (Interface)
+      ├── List (Interface) ──&gt; مرتبة بالفهرس، تسمح بالتكرار
+      │    ├── ArrayList (Class)
+      │    ├── LinkedList (Class)
+      │    └── Vector (Legacy Class) ──&gt; Stack (Legacy Class)
+      │
+      ├── Set (Interface) ──&gt; تمنع التكرار نهائياً
+      │    ├── HashSet (Class)
+      │    ├── LinkedHashSet (Class)
+      │    └── SortedSet (Interface) ──&gt; NavigableSet (Interface) ──&gt; TreeSet (Class)
+      │
+      └── Queue (Interface) ──&gt; طابور معالجة
+           ├── PriorityQueue (Class)
+           └── Deque (Interface) ──&gt; طابور مزدوج الأطراف
+                ├── ArrayDeque (Class)
+                └── LinkedList (Class)
+
+العائلة الثانية: أزواج المفتاح والقيمة (Key-Value Pairs)
+======================================================
+Map (Interface - مستقلة تماماً)
+ ├── HashMap (Class)
+ │    └── LinkedHashMap (Class)
+ ├── SortedMap (Interface) ──&gt; NavigableMap (Interface) ──&gt; TreeMap (Class)
+ ├── ConcurrentMap (Interface) ──&gt; ConcurrentHashMap (Class)
+ └── Hashtable (Legacy Class)</code></pre><h2 id="41fe583e-5844-8077-ab47-f5f88733c2a8" class="" dir="auto">المحور الثالث: عائلة القوائم (<code>List</code> Interface)</h2><p id="41fe583e-5844-80fe-ba83-d26b8b276c77" class="" dir="auto">واجهة <code>List</code> تمثل تسلسلاً مرتباً من العناصر، يحافظ على ترتيب الإدخال، ويسمح بتكرار القيم، ويعطي كل عنصر رقماً مكانياً (<code>Index</code>) يبدأ من الصفر.</p><h3 id="41fe583e-5844-8009-bbe8-de9b80f92fd0" class="" dir="auto">أولاً: كلاس <code>ArrayList</code> (الأكثر استخداماً في الجافا على الإطلاق)</h3><ul id="41fe583e-5844-80fb-8b87-cc8be9ad90cd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>لماذا صنعوه وما المشكلة التي حلها؟</strong> لحل مشكلة الحجم الثابت في المصفوفات التقليدية، بحيث تحصل على مصفوفة تكبر تلقائياً كلما أضفت عناصر جديدة، مع الاحتفاظ بسرعة الوصول الفورية لأي عنصر.</li></ul><ul id="41fe583e-5844-8080-b488-cbf330461908" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>طريقة العمل في الذاكرة (</strong><code><strong>Heap</strong></code><strong>):</strong><ul id="41fe583e-5844-8082-a1cb-e9cbb2c60e4d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">يعتمد داخلياً على مصفوفة عادية متجاورة في الذاكرة: <code>Object[] elementData</code>.</li></ul><ul id="41fe583e-5844-80b2-b4db-c12d5d249763" class="bulleted-list" dir="auto"><li style="list-style-type:circle">عند الإنشاء الفارغ، يبدأ بسعة مبدئية قدرها <strong>عشرة عناصر</strong> عند إضافة أول عنصر.</li></ul><ul id="41fe583e-5844-809f-878b-e4a2b3cffbfd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">عندما تمتلئ المصفوفة، ينشئ <code>ArrayList</code> مصفوفة جديدة أكبر بمقدار <strong>مرة ونصف (</strong><code><strong>1.5x</strong></code><strong>)</strong> من السعة القديمة عبر معادلة إزاحة البتات <code>oldCapacity + (oldCapacity &gt;&gt; 1)</code>، ثم ينسخ العناصر القديمة إليها عبر <code>Arrays.copyOf</code>، ويترك المصفوفة القديمة لجامع القمامة.</li></ul><ul id="41fe583e-5844-80af-8e34-f9ed3861dbfd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>الوصول العشوائي (</strong><code><strong>get(index)</strong></code><strong>):</strong> سريع جداً في وقت ثابت (<code>O(1)</code>) لأن العناصر متجاورة في الذاكرة، فيحسب المعالج عنوان العنصر بمعادلة رياضية مباشرة دون بحث.</li></ul><ul id="41fe583e-5844-8048-b99d-c16819625c72" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>الإضافة والحذف في المنتصف (</strong><code><strong>add(index, item)</strong></code><strong>):</strong> بطيئة (<code>O(n)</code>) لأنها تضطر لإزاحة (<code>Shift</code>) كل العناصر التي تلي موقع الإضافة خطوة لليمين أو اليسار في الذاكرة.</li></ul></li></ul><ul id="41fe583e-5844-8076-8b15-ec3e1889d1c9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>مثال واقعي:</strong> مقاعد قطار مرقمة ومتلاصقة؛ الوصول للمقعد رقم خمسين فوري، لكن إدخال مقعد جديد بين رقم عشرة وأحد عشر يتطلب تحريك كل المقاعد التي خلفه.</li></ul><ul id="41fe583e-5844-8099-8f0c-e35b89a7c5b1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الاستخدام الحقيقي في Spring Boot:</strong> هو النوع الافتراضي الذي تُرجعه دوال جلب البيانات من قواعد البيانات في Spring Data JPA مثل <code>userRepository.findAll()</code>، ويُستخدم لتمثيل القوائم في استجابات الـ REST APIs (مثل قائمة المنتجات أو الطلبات).</li></ul><h3 id="41fe583e-5844-80f5-9dab-cf76b5fbfc9e" class="" dir="auto">ثانياً: كلاس <code>LinkedList</code></h3><ul id="41fe583e-5844-803d-95ea-e5fabc08ee0b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>لماذا صنعوه وما المشكلة التي حلها؟</strong> للتخلص من تكلفة الإزاحة الباهظة (<code>Shifting</code>) في <code>ArrayList</code> عندما يتطلب النظام عمليات إضافة وحذف متكررة في بداية القائمة أو منتصفها.</li></ul><ul id="41fe583e-5844-800f-887f-d53a9cf8eb2a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>طريقة العمل في الذاكرة (</strong><code><strong>Heap</strong></code><strong>):</strong><ul id="41fe583e-5844-80f6-8ecc-e3be17f4a3d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">يعتمد على هيكل <strong>القائمة المترابطة المزدوجة (</strong><code><strong>Doubly-Linked List</strong></code><strong>)</strong>.</li></ul><ul id="41fe583e-5844-80c8-aee7-d76d45c125e0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">لا يحجز مساحة متجاورة؛ بل كل عنصر يُغلف داخل كائن مستقل اسمه <code>Node</code> مبعثر في الـ <code>Heap</code>، ويحتوي كل <code>Node</code> على ثلاث خانات: القيمة نفسها، ومؤشر (<code>prev</code>) للعقدة السابقة، ومؤشر (<code>next</code>) للعقدة التالية.</li></ul><ul id="41fe583e-5844-80f9-b5fb-eaf2a82d745e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>الإضافة والحذف:</strong> سريعة جداً (<code>O(1)</code>) بمجرد الوصول للمكان؛ كل ما تفعله هو تغيير اتجاه المؤشرات دون تحريك أي عنصر في الذاكرة.</li></ul><ul id="41fe583e-5844-80e4-8616-e2afb2c3b273" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>الوصول العشوائي (</strong><code><strong>get(index)</strong></code><strong>):</strong> بطيء (<code>O(n)</code>) لأنك مضطر للسير من بداية القائمة أو نهايتها خطوة بخطوة حتى تصل للفهرس المطلوب، كما يستهلك ذاكرة أكبر بكثير من <code>ArrayList</code> بسبب تخزين مؤشرين إضافيين لكل عنصر.</li></ul></li></ul><ul id="41fe583e-5844-80a1-bf26-ea80932952ca" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>مثال واقعي:</strong> عربات قطار مربوطة بسلاسل حديدية؛ فك عربة من المنتصف أو ربط عربة جديدة يتم فوراً دون تحريك باقي العربات.</li></ul><ul id="41fe583e-5844-80d8-b87f-c7a26547d75f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الاستخدام الحقيقي في Spring Boot:</strong> نادر الاستخدام في استعلامات قواعد البيانات، ويُستخدم أحياناً في الخوارزميات الداخلية التي تتطلب إضافة وحذفاً مستمراً من الأطراف كطابور مزدوج (<code>Deque</code>).</li></ul><h3 id="41fe583e-5844-8067-b225-cd2c2232ec88" class="" dir="auto">ثالثاً: كلاس <code>Vector</code> وكلاس <code>Stack</code> (الكلاسات التراثية القديمة)</h3><ul id="41fe583e-5844-8084-bb84-e4500e27baed" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>لماذا صنعوهما؟</strong> أُنشئ <code>Vector</code> في الإصدار الأول للجافا ليكون نسخة آمنة مع تعدد الخيوط (<code>Thread-Safe</code>) من المصفوفة الديناميكية، وورث منه كلاس <code>Stack</code> لتمثيل المكدس.</li></ul><ul id="41fe583e-5844-80e3-bfba-ee198e2fd67c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>لماذا هجرهما المبرمجون؟</strong> لأن <code>Vector</code> يضع قفلاً (<code>synchronized</code>) على كل دالة، مما يسبب بطئاً شديداً حتى لو كان البرنامج يعمل بخيط واحد، وعندما يمتلئ يضاعف حجمه إلى الضعف (<code>2x</code>) مما يهدر الذاكرة. أما <code>Stack</code> فكان خطأً تصميمياً لأنه ورث من <code>Vector</code> فسمح بالوصول للعناصر من المنتصف (<code>get(index)</code>) كاسراً مبدأ المكدس.</li></ul><h2 id="41fe583e-5844-808f-a4f4-cfc734ab2172" class="" dir="auto">المحور الرابع: عائلة المجموعات (<code>Set</code> Interface)</h2><p id="41fe583e-5844-80b2-ba00-f2159662578e" class="" dir="auto">واجهة <code>Set</code> تمثل مجموعة رياضية صارمة: <strong>ممنوع تكرار أي عنصر بداخلها</strong>. وتعتمد في اكتشاف التكرار على دالتي <code>hashCode()</code> و <code>equals()</code>.</p><h3 id="41fe583e-5844-807d-9a4b-cf5f2cf7a644" class="" dir="auto">أولاً: كلاس <code>HashSet</code> (الأكثر استخداماً لمنع التكرار)</h3><ul id="41fe583e-5844-804a-9e49-f5a829e3a9d9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>لماذا صنعوه وما المشكلة التي حلها؟</strong> في القوائم (<code>List</code>)، إذا أردت التأكد من عدم وجود اسم مكرر قبل إضافته، تضطر لفحص القائمة كاملة عنصراً عنصراً (<code>O(n)</code>). <code>HashSet</code> حل هذه المشكلة بجعل عملية الفحص والإضافة تتم في <strong>وقت ثابت فوري (</strong><code><strong>O(1)</strong></code><strong>)</strong> مهما بلغ حجم البيانات.</li></ul><ul id="41fe583e-5844-8048-b1f0-d0880562397c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>طريقة العمل في الذاكرة (</strong><code><strong>Heap</strong></code><strong>):</strong><ul id="41fe583e-5844-80e0-b6b8-eff6827778f8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">المفاجأة الهندسية: <code>HashSet</code> لا يملك خوارزمية تخزين خاصة به! بل هو مجرد واجهة تغلف بداخلها كائن <code><strong>HashMap</strong></code><strong> حقيقي</strong>!</li></ul><ul id="41fe583e-5844-80cc-b59c-f8174526ae8e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">عندما تضيف عنصراً إلى <code>HashSet</code> عبر <code>set.add(&quot;Ali&quot;)</code>, يقوم بوضعه كـ <strong>مفتاح (</strong><code><strong>Key</strong></code><strong>)</strong> في الـ <code>HashMap</code> الداخلي، ويضع كائناً وهمياً ثابتاً اسمه <code>PRESENT</code> كـ <strong>قيمة (</strong><code><strong>Value</strong></code><strong>)</strong>. وبما أن مفاتيح الـ <code>HashMap</code> لا تتكرر أبداً، يضمن الـ <code>HashSet</code> عدم التكرار تلقائياً.</li></ul><ul id="41fe583e-5844-805a-bf97-e0e42a24b5c5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>ملاحظة الترتيب:</strong> لا يحافظ على ترتيب الإدخال إطلاقاً؛ العناصر تظهر بترتيب يبدو عشوائياً بناءً على ناتج دالة الـ Hash.</li></ul></li></ul><ul id="41fe583e-5844-80f2-9260-c5ebb3c4c566" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>مثال واقعي:</strong> سجل الأرقام القومية للمواطنين؛ لا يمكن أن يتكرر رقم قومي لشخصين، والبحث عن أي مواطن برقم بطاقته يتم في لحظة واحدة.</li></ul><ul id="41fe583e-5844-8041-9205-f7c2971517b7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الاستخدام الحقيقي في Spring Boot:</strong><ul id="41fe583e-5844-802c-9d2a-e2a35159c46b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>في Spring Security:</strong> تُخزن صلاحيات وأدوار المستخدم داخل <code>Set&lt;GrantedAuthority&gt;</code> لضمان عدم تكرار الصلاحية وسرعة التحقق منها عند كل طلب API.</li></ul><ul id="41fe583e-5844-80cd-b0e1-ffa6b9af100f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>في Spring Data JPA / Hibernate:</strong> يُفضَّل استخدام <code>Set&lt;Role&gt;</code> بدلاً من <code>List&lt;Role&gt;</code> في علاقات <code>@ManyToMany</code> لمنع تكرار السجلات وتجنب مشكلة <code>MultipleBagFetchException</code> الشهيرة عند جلب عدة علاقات في استعلام واحد.</li></ul></li></ul><h3 id="41fe583e-5844-80d3-966e-c2f86c421dec" class="" dir="auto">ثانياً: كلاس <code>LinkedHashSet</code></h3><ul id="41fe583e-5844-8016-adea-cb508fc0392a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>لماذا صنعوه وما المشكلة التي حلها؟</strong> <code>HashSet</code> يبعثر ترتيب العناصر. إذا احتجت قائمة تمنع التكرار وتبحث بسرعة فائقة (<code>O(1)</code>), <strong>ولكنك تشترط الحفاظ على نفس ترتيب إضافة العناصر</strong>، فهذا هو الحل.</li></ul><ul id="41fe583e-5844-80e7-a3a7-d2943bd63ec0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>طريقة العمل في الذاكرة:</strong> يغلف داخلياً كائن <code>LinkedHashMap</code>، حيث يجمع بين جدول التجزئة (<code>Hash Table</code>) للسرعة وبين قائمة مترابطة مزدوجة (<code>Doubly-Linked List</code>) تربط العناصر ببعضها حسب ترتيب دخولها.</li></ul><ul id="41fe583e-5844-8062-820c-e2e55ea6b5ca" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الاستخدام الحقيقي في Spring Boot:</strong> حفظ قائمة فلاتر (<code>Filters</code>) أو خطوات معالجة (<code>Interceptors</code>) أو وسوم (<code>Tags</code>) يجب أن تبقى فريدة وبنفس الترتيب الذي أدخله المستخدم.</li></ul><h3 id="41fe583e-5844-800e-9a81-deffd32efef1" class="" dir="auto">ثالثاً: كلاس <code>TreeSet</code></h3><ul id="41fe583e-5844-8049-9cbe-dfe2354e2479" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>لماذا صنعوه وما المشكلة التي حلها؟</strong> لتخزين عناصر فريدة بحيث تظل <strong>مرتبة تلقائياً وبشكل مستمر</strong> في كل لحظة دون الحاجة لاستدعاء دوال الفرز (<code>Collections.sort()</code>) بعد كل إضافة.</li></ul><ul id="41fe583e-5844-8022-817a-fcac27be041b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>طريقة العمل في الذاكرة:</strong><ul id="41fe583e-5844-80b6-af99-ce9d7ce12477" class="bulleted-list" dir="auto"><li style="list-style-type:circle">يعتمد داخلياً على <code>TreeMap</code>، وهو مبني على هيكل <strong>شجرة حمراء-سوداء متوازنة (</strong><code><strong>Red-Black Tree</strong></code><strong>)</strong>.</li></ul><ul id="41fe583e-5844-80da-ae00-ce4ed8786ba0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">كل عملية إضافة أو حذف أو بحث تستغرق وقتاً لوغاريتمياً (<code>O(log n)</code>).</li></ul><ul id="41fe583e-5844-8047-8af4-f272533caeb7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">يشترط أن تكون العناصر قابلة للمقارنة (تطبق واجهة <code>Comparable</code> أو يتم تمرير <code>Comparator</code> عند الإنشاء)، وإلا سيرمي خطأ <code>ClassCastException</code>.</li></ul></li></ul><ul id="41fe583e-5844-8071-b369-d2bc29384129" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>مثال واقعي:</strong> لوحة شرف أو قاموس لغوي يرتب الكلمات أبجدياً بمجرد كتابتها.</li></ul><h2 id="41fe583e-5844-80ce-a42b-d31592855a05" class="" dir="auto">المحور الخامس: عائلة الطوابير والمكدسات (<code>Queue</code> &amp; <code>Deque</code>)</h2><p id="41fe583e-5844-8007-b295-cce0cc88eeff" class="" dir="auto">تُستخدم هذه العائلة لتخزين العناصر مؤقتاً بانتظار معالجتها وفق قواعد دخول وخروج محددة.</p><h3 id="41fe583e-5844-800d-bcbb-c435aebff503" class="" dir="auto">أولاً: كلاس <code>PriorityQueue</code> (طابور الأولويات)</h3><ul id="41fe583e-5844-8023-bb04-f77c75d4c9a6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>لماذا صنعوه وما المشكلة التي حلها؟</strong> الطابور العادي يخدم من يأتي أولاً (<code>FIFO</code>). لكن في الأنظمة الواقعية، هناك مهام طارئة يجب أن تتجاوز الطابور وتُنفذ فوراً.</li></ul><ul id="41fe583e-5844-80ec-b706-c94a7e9b74d0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>طريقة العمل في الذاكرة:</strong><ul id="41fe583e-5844-8047-9316-cb67961d7f4e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">مبني على هيكل <strong>الكومة الثنائية الصغرى (</strong><code><strong>Binary Min-Heap</strong></code><strong>)</strong> الممثلة داخل مصفوفة عادية <code>Object[]</code> في الـ <code>Heap</code> (حيث يكون العنصر الأصغر أو الأعلى أولوية دائماً في قمة المصفوفة عند الفهرس صفر).</li></ul><ul id="41fe583e-5844-80ab-a0f0-fa678d5b0a24" class="bulleted-list" dir="auto"><li style="list-style-type:circle">جلب العنصر الأعلى أولوية (<code>peek</code>) يتم في وقت ثابت (<code>O(1)</code>), بينما الإضافة والسحب (<code>offer</code> و <code>poll</code>) يعيدان ترتيب الشجرة في وقت لوغاريتمي (<code>O(log n)</code>).</li></ul></li></ul><ul id="41fe583e-5844-80bf-a534-c636bcdf08c9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>مثال واقعي:</strong> قسم الطوارئ في المستشفى؛ المريض ذو الحالة الحرجة يدخل للطبيب فوراً قبل من وصل قبله بحالة زكام بسيطة.</li></ul><ul id="41fe583e-5844-80ce-86b3-dcd434e5429d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الاستخدام الحقيقي في Spring Boot:</strong> جدولة المهام الخلفية (<code>Task Schedulers</code>) وتنفيذ العمليات ذات الأولوية العالية في أنظمة معالجة الطلبات.</li></ul><h3 id="41fe583e-5844-80f2-8ecc-f4ce201e884d" class="" dir="auto">ثانياً: كلاس <code>ArrayDeque</code> (البديل الحديث للـ Stack والـ Queue)</h3><ul id="41fe583e-5844-8058-957a-d9bc65893df7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>لماذا صنعوه وما المشكلة التي حلها؟</strong> لتوفير طابور مزدوج الأطراف (<code>Double-Ended Queue</code>) فائق السرعة يعمل كـ <strong>طابور (</strong><code><strong>Queue</strong></code><strong>)</strong> أو كـ <strong>مكدس (</strong><code><strong>Stack</strong></code><strong>)</strong>، ويتفوق في الأداء والذاكرة على <code>LinkedList</code> وعلى كلاس <code>Stack</code> القديم.</li></ul><ul id="41fe583e-5844-8099-b667-f98df98b0b52" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>طريقة العمل في الذاكرة:</strong><ul id="41fe583e-5844-802a-8126-d8b87ffb3c59" class="bulleted-list" dir="auto"><li style="list-style-type:circle">يعتمد على <strong>مصفوفة دائرية ديناميكية (</strong><code><strong>Resizable Circular Array</strong></code><strong>)</strong> بمؤشرين: <code>head</code> (البداية) و <code>tail</code> (النهاية).</li></ul><ul id="41fe583e-5844-8059-a167-cd9ae1daf550" class="bulleted-list" dir="auto"><li style="list-style-type:circle">سعة المصفوفة دائماً من مضاعفات الرقم اثنين (مثل ستة عشر، اثنان وثلاثون)، مما يسمح للجافا بحساب الالتفاف الدائري للمؤشرات باستخدام العمليات المنطقية السريعة على البتات (<code>Bitwise AND</code>) بدلاً من باقي القسمة البطيء.</li></ul><ul id="41fe583e-5844-801e-84b8-fb8d621dbc12" class="bulleted-list" dir="auto"><li style="list-style-type:circle">لا ينشئ كائنات <code>Node</code> إضافية مثل <code>LinkedList</code>، مما يقلل الضغط على جامع القمامة ويجعله متوافقاً جداً مع ذاكرة المعالج المخبئية (<code>CPU Cache</code>).</li></ul></li></ul><ul id="41fe583e-5844-8082-86cc-c982b28954b7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>مثال واقعي:</strong> زر التراجع (<code>Undo</code>) في محررات النصوص (يعمل كمكدس <code>Stack</code> عبر <code>push</code> و <code>pop</code>)، أو طابور طباعة المستندات (يعمل كطابور <code>Queue</code> عبر <code>offer</code> و <code>poll</code>).</li></ul><h2 id="41fe583e-5844-8028-8a10-e21bdb6b30bc" class="" dir="auto">المحور السادس: عائلة الخرائط المستقلة (<code>Map</code> Interface) — قلب الـ Backend</h2><p id="41fe583e-5844-8009-a5ca-df4d63fa9024" class="" dir="auto">واجهة <code>Map</code> هي الأهم على الإطلاق في بناء الأنظمة الخلفية؛ لأنها تربط كل <strong>مفتاح فريد (</strong><code><strong>Key</strong></code><strong>)</strong> بـ <strong>قيمة (</strong><code><strong>Value</strong></code><strong>)</strong> للوصول إليها مباشرة دون بحث.</p><h3 id="41fe583e-5844-8085-ab97-e714ae735fb7" class="" dir="auto">أولاً: كلاس <code>HashMap</code> (تشريح كامل للذاكرة وتحسينات جافا الثامن)</h3><ul id="41fe583e-5844-8002-b4bc-e1681a5bdadd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>لماذا صنعوه وما المشكلة التي حلها؟</strong> الوصول المباشر للكائنات المعقدة في وقت ثابت (<code>O(1)</code>) باستخدام معرف فريد (مثل جلب بيانات الطالب كاملة عبر رقمه الجامعي فوراً).</li></ul><ul id="41fe583e-5844-8080-887b-c1e64cc58e3d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>طريقة العمل في الذاكرة (</strong><code><strong>Heap</strong></code><strong>) بالتفصيل:</strong><ul id="41fe583e-5844-8025-9149-fac23a5796f8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">يتكون <code>HashMap</code> داخلياً من مصفوفة من العقد تُسمى <strong>الدلاء (</strong><code><strong>Buckets</strong></code><strong>)</strong>: <code>Node&lt;K,V&gt;[] table</code>.</li></ul><ul id="41fe583e-5844-805c-aa3b-fce2d8a24a5a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">عند إنشاء <code>HashMap</code>، تكون سعته الافتراضية <strong>ستة عشر دلواً</strong>، ومعامل الامتلاء (<code>Load Factor</code>) يساوي <strong>خمسة وسبعين بالمئة (</strong><code><strong>0.75</strong></code><strong>)</strong>.</li></ul><ul id="41fe583e-5844-80d6-81d4-f34646eeae92" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>كيف تتم الإضافة (</strong><code><strong>put(key, value)</strong></code><strong>)؟</strong><ul id="41fe583e-5844-80b1-a76c-d8e5c05c2999" class="bulleted-list" dir="auto"><li style="list-style-type:square">يأخذ <code>HashMap</code> المفتاح ويستدعي دالة <code>key.hashCode()</code> للحصول على رقم صحيح.</li></ul><ul id="41fe583e-5844-80ac-9020-f5d5857067f5" class="bulleted-list" dir="auto"><li style="list-style-type:square">يطبق معادلة رياضية لتحويل هذا الرقم إلى رقم فهرس (<code>Index</code>) يقع بين الصفر وخمسة عشر، ثم يضع العقدة (<code>Node</code>) في ذلك الدلو.</li></ul></li></ul><ul id="41fe583e-5844-802d-acbf-ef2ef535cc23" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>ماذا يحدث عند التصادم (</strong><code><strong>Hash Collision</strong></code><strong>)؟</strong> (أي عندما ينتج مفتاحان مختلفان نفس رقم الدلو):<ul id="41fe583e-5844-8093-abe0-c0500995bc83" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>قبل إصدار جافا الثامن:</strong> كانت العقد المتصادمة تُربط ببعضها على شكل <strong>قائمة مترابطة (</strong><code><strong>Linked List</strong></code><strong>)</strong> داخل نفس الدلو، مما كان يبطئ البحث إلى <code>O(n)</code> إذا كثرت التصادمات.</li></ul><ul id="41fe583e-5844-8074-91c2-d56e99c8bde8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>التحسين العبقري في جافا الثامن (</strong><code><strong>Treeification</strong></code><strong>):</strong> إذا زاد عدد العقد المتصادمة في دلو واحد عن <strong>ثمانية عقد (</strong><code><strong>TREEIFY_THRESHOLD</strong></code><strong>)</strong> وكان حجم الجدول الكلي لا يقل عن <strong>أربعة وستين دلواً</strong>، يقوم <code>HashMap</code> تلقائياً بتحويل تلك القائمة المترابطة داخل الدلو إلى <strong>شجرة حمراء-سوداء (</strong><code><strong>Red-Black Tree</strong></code><strong>)</strong>! وبذلك يتحول أسوأ سيناريو للبحث من <code>O(n)</code> البطيء إلى <code>O(log n)</code> السريع ويحمي السيرفر من هجمات حجب الخدمة (<code>HashDoS</code>).</li></ul></li></ul><ul id="41fe583e-5844-8032-8da2-d79629f46d4a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>متى يتوسع (</strong><code><strong>Rehashing</strong></code><strong>)؟</strong> عندما تمتلئ خمسة وسبعون بالمئة من الدلاء (أي عند إضافة العنصر الثالث عشر في جدول سعته ستة عشر)، يضاعف <code>HashMap</code> حجم المصفوفة إلى <strong>اثنين وثلاثين دلواً</strong> ويعيد توزيع العناصر.</li></ul></li></ul><ul id="41fe583e-5844-8015-9671-dab55751e143" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>مثال واقعي:</strong> خزائن الأمانات الذكية في المولات؛ رقم الخزانة هو المفتاح، ومحتوياتها هي القيمة.</li></ul><ul id="41fe583e-5844-80dc-b9f9-d7e25a92a05f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الاستخدام الحقيقي في Spring Boot:</strong><ul id="41fe583e-5844-80bd-a1c7-e8385f9d5e97" class="bulleted-list" dir="auto"><li style="list-style-type:circle">مكتبة <strong>Jackson</strong> تستخدم <code>LinkedHashMap</code> (ابن <code>HashMap</code>) افتراضياً عند تحويل أي نص <code>JSON</code> ديناميكي إلى كائن جافا (<code>Map&lt;String, Object&gt;</code>).</li></ul><ul id="41fe583e-5844-80e0-9ddf-c9f3a19de3e0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">تجميع البيانات في تقارير الـ API باستخدام <code>Collectors.groupingBy(...)</code> يُرجع <code>Map&lt;K, List&lt;V&gt;&gt;</code>.</li></ul></li></ul><h3 id="41fe583e-5844-8073-ab0e-eb15a6b5170d" class="" dir="auto">ثانياً: كلاس <code>LinkedHashMap</code> (صانع الـ LRU Cache)</h3><ul id="41fe583e-5844-80e2-82a0-fd2bcaba54eb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>طريقة العمل في الذاكرة:</strong> يرث من <code>HashMap</code> ويضيف قائمة مترابطة مزدوجة تمر عبر جميع العناصر.</li></ul><ul id="41fe583e-5844-80c3-a639-fd3a7dcbaa7d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ميزة خفية للمحترفين:</strong> يحتوي على <code>Constructor</code> يأخذ معامل <code>accessOrder = true</code>؛ عند تفعيله، كلما قرأت عنصراً ينتقل تلقائياً إلى نهاية القائمة، مما يجعل الأقل استخداماً في المقدمة دائماً. هذه هي الطريقة القياسية لبناء <strong>ذاكرة تخزين مؤقت (</strong><code><strong>LRU Cache</strong></code><strong>)</strong> في الجافا.</li></ul><h3 id="41fe583e-5844-80af-9f12-e5ef87ee4bfa" class="" dir="auto">ثالثاً: كلاس <code>TreeMap</code></h3><ul id="41fe583e-5844-8097-bb94-e99a7f324320" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>طريقة العمل في الذاكرة:</strong> مبني بالكامل على شجرة حمراء-سوداء (<code>Red-Black Tree</code>) ترتب الأزواج تصاعدياً بناءً على <strong>المفتاح (</strong><code><strong>Key</strong></code><strong>)</strong> في وقت <code>O(log n)</code>.</li></ul><h3 id="41fe583e-5844-802a-8cd2-fa48eba5b21b" class="" dir="auto">رابعاً: كلاس <code>ConcurrentHashMap</code> (بطل بيئة الإنتاج في Spring Boot)</h3><ul id="41fe583e-5844-804b-b313-e64ca94b3a61" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>لماذا صنعوه وما المشكلة التي حلها؟</strong><ul id="41fe583e-5844-80df-9d69-ea3519d54dad" class="bulleted-list" dir="auto"><li style="list-style-type:circle">في تطبيقات Spring Boot، يدخل مئات المستخدمين في نفس اللحظة (<code>Multi-threaded Environment</code>). استخدام <code>HashMap</code> العادي مع الكتابة المتزامنة من عدة خيوط يسبب ضياع البيانات أو انهيار التطبيق.</li></ul><ul id="41fe583e-5844-8001-9068-d57855fd0c20" class="bulleted-list" dir="auto"><li style="list-style-type:circle">في المقابل، استخدام <code>Hashtable</code> القديم يضع قفلاً واحداً على الخريطة بأكملها، فيقف مئة مستخدم في طابور انتظار لمجرد أن مستخدماً واحداً يقرأ أو يكتب!</li></ul></li></ul><ul id="41fe583e-5844-80a9-8008-c8df037da233" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>طريقة العمل في الذاكرة:</strong><ul id="41fe583e-5844-8004-8fd5-fa61c0b364de" class="bulleted-list" dir="auto"><li style="list-style-type:circle">يلغي القفل الشامل تماماً! القراءة (<code>get</code>) تتم <strong>بدون أي أقفال (</strong><code><strong>Lock-Free</strong></code><strong>)</strong> وبأقصى سرعة.</li></ul><ul id="41fe583e-5844-805f-93d4-c1a785813e59" class="bulleted-list" dir="auto"><li style="list-style-type:circle">عند الكتابة (<code>put</code>)، يستخدم تقنية المقارنة والتبديل الذرية (<code>CAS - Compare-And-Swap</code>) إذا كان الدلو فارغاً، أو يضع قفلاً (<code>synchronized</code>) <strong>على رأس الدلو الواحد الذي تتم الكتابة فيه فقط</strong>! وبذلك يستطيع ستة عشر خيطاً الكتابة في ستة عشر دلواً مختلفاً في نفس اللحظة دون أن يعطل أحدهم الآخر.</li></ul></li></ul><ul id="41fe583e-5844-80f6-8e44-f567f00d16d5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>الاستخدام الحقيقي في Spring Boot:</strong><ul id="41fe583e-5844-80f2-ae8f-e96ff013680d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">قلب إطار عمل Spring نفسه مبني عليه! حاوية الـ IoC (<code>DefaultSingletonBeanRegistry</code>) تخزن جميع الـ Beans الجاهزة في المشروع داخل <code>ConcurrentHashMap&lt;String, Object&gt; singletonObjects</code>.</li></ul><ul id="41fe583e-5844-80bf-a5f7-f720a7ac8c8a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">يُستخدم في بناء أنظمة تحديد معدل الطلبات (<code>Rate Limiting</code>)، وتخزين الجلسات النشطة (<code>Active Sessions</code>)، والكاش المحلي في الذاكرة.</li></ul></li></ul><h2 id="41fe583e-5844-8071-a965-c7a659e73922" class="" dir="auto">المحور السابع: جدول المقارنة الهندسي الشامل (Cheat Sheet)</h2><table id="41fe583e-5844-8079-99bb-f663d38b6ceb" class="simple-table" dir="rtl"><tbody><tr id="41fe583e-5844-80e0-b776-f0bcbb9de191" dir="rtl"><td id="SkGs" class=""><strong>الهيكل (Class)</strong></td><td id="SM?t" class=""><strong>الواجهة الأم</strong></td><td id="yaGE" class=""><strong>البنية الداخلية في الـ Heap</strong></td><td id="boWa" class=""><strong>الوصول / البحث</strong></td><td id="v_Jj" class=""><strong>الإضافة / الحذف</strong></td><td id="~pLd" class=""><strong>الحفاظ على الترتيب</strong></td><td id="@IBQ" class=""><strong>الأمان مع تعدد الخيوط</strong></td></tr><tr id="41fe583e-5844-8014-8038-f1a8ccd1900f" dir="rtl"><td id="SkGs" class="">كلاس <code>ArrayList</code></td><td id="SM?t" class="">واجهة <code>List</code></td><td id="yaGE" class="">مصفوفة ديناميكية متجاورة</td><td id="boWa" class="">فوري <code>O(1)</code> بالفهرس</td><td id="v_Jj" class="">بطيء في المنتصف <code>O(n)</code></td><td id="~pLd" class="">يحفظ ترتيب الإدخال</td><td id="@IBQ" class="">غير آمن</td></tr><tr id="41fe583e-5844-80e5-b886-f51b2e12d8d9" dir="rtl"><td id="SkGs" class="">كلاس <code>LinkedList</code></td><td id="SM?t" class="">واجهتي <code>List</code> و <code>Deque</code></td><td id="yaGE" class="">عقد مترابطة مزدوجة (<code>Nodes</code>)</td><td id="boWa" class="">بطيء بالفهرس <code>O(n)</code></td><td id="v_Jj" class="">سريع في الأطراف <code>O(1)</code></td><td id="~pLd" class="">يحفظ ترتيب الإدخال</td><td id="@IBQ" class="">غير آمن</td></tr><tr id="41fe583e-5844-80c8-bf1e-ea71f2bcfce0" dir="rtl"><td id="SkGs" class="">كلاس <code>HashSet</code></td><td id="SM?t" class="">واجهة <code>Set</code></td><td id="yaGE" class="">جدول تجزئة (<code>HashMap</code> داخلي)</td><td id="boWa" class="">فوري <code>O(1)</code></td><td id="v_Jj" class="">فوري <code>O(1)</code></td><td id="~pLd" class="">لا يحفظ الترتيب</td><td id="@IBQ" class="">غير آمن</td></tr><tr id="41fe583e-5844-8012-b45f-eec556612841" dir="rtl"><td id="SkGs" class="">كلاس <code>LinkedHashSet</code></td><td id="SM?t" class="">واجهة <code>Set</code></td><td id="yaGE" class="">جدول تجزئة مع قائمة مترابطة</td><td id="boWa" class="">فوري <code>O(1)</code></td><td id="v_Jj" class="">فوري <code>O(1)</code></td><td id="~pLd" class="">يحفظ ترتيب الإدخال</td><td id="@IBQ" class="">غير آمن</td></tr><tr id="41fe583e-5844-80ba-a8cf-fa0f7a0e5f48" dir="rtl"><td id="SkGs" class="">كلاس <code>TreeSet</code></td><td id="SM?t" class="">واجهة <code>NavigableSet</code></td><td id="yaGE" class="">شجرة حمراء-سوداء متوازنة</td><td id="boWa" class="">لوغاريتمي <code>O(log n)</code></td><td id="v_Jj" class="">لوغاريتمي <code>O(log n)</code></td><td id="~pLd" class="">مرتب تصاعدياً دائماً</td><td id="@IBQ" class="">غير آمن</td></tr><tr id="41fe583e-5844-80ef-a98c-e042afe873cc" dir="rtl"><td id="SkGs" class="">كلاس <code>PriorityQueue</code></td><td id="SM?t" class="">واجهة <code>Queue</code></td><td id="yaGE" class="">كومة ثنائية (<code>Binary Min-Heap</code>)</td><td id="boWa" class="">قمة الكومة فقط <code>O(1)</code></td><td id="v_Jj" class="">لوغاريتمي <code>O(log n)</code></td><td id="~pLd" class="">مرتب حسب الأولوية</td><td id="@IBQ" class="">غير آمن</td></tr><tr id="41fe583e-5844-8093-bcae-dffddda10a01" dir="rtl"><td id="SkGs" class="">كلاس <code>ArrayDeque</code></td><td id="SM?t" class="">واجهة <code>Deque</code></td><td id="yaGE" class="">مصفوفة دائرية ديناميكية</td><td id="boWa" class="">الأطراف فقط <code>O(1)</code></td><td id="v_Jj" class="">فوري في الأطراف <code>O(1)</code></td><td id="~pLd" class="">يحفظ ترتيب الإدخال</td><td id="@IBQ" class="">غير آمن</td></tr><tr id="41fe583e-5844-8012-8f39-f2c72b92f469" dir="rtl"><td id="SkGs" class="">كلاس <code>HashMap</code></td><td id="SM?t" class="">واجهة <code>Map</code></td><td id="yaGE" class="">مصفوفة دلاء (<code>Buckets</code> + شجرة)</td><td id="boWa" class="">فوري <code>O(1)</code> بالمفتاح</td><td id="v_Jj" class="">فوري <code>O(1)</code></td><td id="~pLd" class="">لا يحفظ الترتيب</td><td id="@IBQ" class="">غير آمن</td></tr><tr id="41fe583e-5844-8049-a655-dcda28d0bada" dir="rtl"><td id="SkGs" class="">كلاس <code>ConcurrentHashMap</code></td><td id="SM?t" class="">واجهة <code>ConcurrentMap</code></td><td id="yaGE" class="">مصفوفة دلاء بأقفال جزئية (<code>CAS</code>)</td><td id="boWa" class="">فوري بدون قفل <code>O(1)</code></td><td id="v_Jj" class="">فوري بقفل الدلو <code>O(1)</code></td><td id="~pLd" class="">لا يحفظ الترتيب</td><td id="@IBQ" class=""><strong>آمن وعالي الأداء</strong></td></tr></tbody></table><h2 id="41fe583e-5844-80ff-b074-c56166ff5c2f" class="" dir="auto">المحور الثامن: منهجية اتخاذ القرار السريع في مشاريعك</h2><p id="41fe583e-5844-8086-b0b0-facfd3c125a5" class="" dir="auto">عندما تبدأ بكتابة أي ميزة في مشروع Spring Boot وتحتار في اختيار الهيكل المناسب، اتبع شجرة القرارات التالية:</p><ul id="41fe583e-5844-80d0-b64e-dee3d5489dfa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>هل بياناتك عبارة عن أزواج (مفتاح وقيمة) للبحث السريع؟</strong><ul id="41fe583e-5844-80b2-b240-d525dcaed5ae" class="bulleted-list" dir="auto"><li style="list-style-type:circle">إذا كنت في بيئة متعددة الخيوط (مثل كاش مشترك في السيرفر) ← اختر <code><strong>ConcurrentHashMap</strong></code>.</li></ul><ul id="41fe583e-5844-800b-baf0-f316f5931708" class="bulleted-list" dir="auto"><li style="list-style-type:circle">إذا كنت تريد تخزيناً مؤقتاً داخل دالة واحدة بأقصى سرعة ← اختر <code><strong>HashMap</strong></code>.</li></ul><ul id="41fe583e-5844-809f-8f83-e90bbe3a0685" class="bulleted-list" dir="auto"><li style="list-style-type:circle">إذا أردت الحفاظ على ترتيب الإدخال أو بناء <code>LRU Cache</code> ← اختر <code><strong>LinkedHashMap</strong></code>.</li></ul><ul id="41fe583e-5844-8012-b6e8-edc37070129b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">إذا أردت فرز المفاتيح تلقائياً ← اختر <code><strong>TreeMap</strong></code>.</li></ul></li></ul><ul id="41fe583e-5844-80a9-938d-ebe938220097" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>هل بياناتك عناصر مفردة وتريد منع التكرار نهائياً؟</strong><ul id="41fe583e-5844-80c5-ad93-fa2a235631b1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">إذا أردت أقصى سرعة ولا يهمك الترتيب (مثل علاقات JPA وصلاحيات Security) ← اختر <code><strong>HashSet</strong></code>.</li></ul><ul id="41fe583e-5844-80ab-b9fb-c0f15738a4ae" class="bulleted-list" dir="auto"><li style="list-style-type:circle">إذا أردت منع التكرار مع الحفاظ على ترتيب الإدخال ← اختر <code><strong>LinkedHashSet</strong></code>.</li></ul><ul id="41fe583e-5844-8088-9284-eb5b906f85c8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">إذا أردت منع التكرار مع فرز العناصر تلقائياً ← اختر <code><strong>TreeSet</strong></code>.</li></ul></li></ul><ul id="41fe583e-5844-8033-9242-ed65b3587251" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>هل بياناتك عناصر مفردة وتسمح بالتكرار؟</strong><ul id="41fe583e-5844-8021-be1e-c5a0908cefaa" class="bulleted-list" dir="auto"><li style="list-style-type:circle">إذا كنت ستعرضها أو تقرأها بالفهرس (وهو حال تسعين بالمئة من قوائم الـ API) ← اختر <code><strong>ArrayList</strong></code>.</li></ul><ul id="41fe583e-5844-80fd-8491-dc5136c72dd5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">إذا كنت تبني مكدساً (<code>Stack</code>) أو طابور انتظار (<code>Queue</code>) ← اختر <code><strong>ArrayDeque</strong></code>.</li></ul><ul id="41fe583e-5844-8037-a377-ee51283b80ce" class="bulleted-list" dir="auto"><li style="list-style-type:circle">إذا كنت تعالج مهاماً حسب درجة الأهمية ← اختر <code><strong>PriorityQueue</strong></code>.</li></ul></li></ul><p id="41fe583e-5844-80d6-a8cb-f1ffb102b199" class="" dir="auto">هل تود أن نأخذ الآن تطبيقاً عملياً واقعياً في <strong>Spring Boot</strong> يدمج بين <code>ConcurrentHashMap</code> و <code>ArrayDeque</code> و <code>Set</code> لبناء نظام <code>Rate Limiter</code> أو <code>In-Memory Cache</code> مصغر من الصفر؟</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+
+<style> html, body { background-color: #191919 !important; color: #e6e6e6 !important; } h1, h2, h3, p, li, blockquote { color: #e6e6e6 !important; } table, th, td { border-color: rgba(255, 255, 255, 0.18) !important; color: #e6e6e6 !important; } th, .simple-table-header-color { background-color: #252525 !important; color: #ffffff !important; } blockquote { border-color: #666666 !important; } pre.code, pre.code code { direction: ltr !important; text-align: left !important; white-space: pre !important; word-break: normal !important; overflow-x: auto !important; background-color: #1e1f22 !important; color: #bcbec4 !important; font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace !important; font-size: 14px !important; line-height: 1.6 !important; text-shadow: none !important; } pre.code { border: 1px solid #393b40 !important; border-radius: 8px !important; padding: 1.2em !important; } p code, li code, td code { direction: ltr !important; display: inline-block !important; background-color: #2b2d30 !important; color: #cf8e6d !important; padding: 0.1em 0.45em !important; border-radius: 4px !important; font-family: 'JetBrains Mono', Consolas, monospace !important; } .token { text-shadow: none !important; background: transparent !important; } .token.comment { color: #7a7e85 !important; font-style: italic !important; } .token.keyword { color: #cf8e6d !important; } .token.string, .token.char { color: #6aab73 !important; } .token.number, .token.boolean { color: #2aacb8 !important; } .token.function { color: #56a8f5 !important; } .token.class-name { color: #e5c07b !important; } .token.annotation { color: #b3ae60 !important; } .token.operator, .token.punctuation { color: #bcbec4 !important; } </style> 
